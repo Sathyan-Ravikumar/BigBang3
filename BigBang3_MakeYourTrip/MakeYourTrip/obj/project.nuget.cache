@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "dgSpecHash": "ukwREIvdSRoaCmaRc+g79HeqR8odefBtnraFJipb9jEZozXT5tHL+4Jp9/X1sTdVbsJHpVom6goxghBwn+9rGA==",
+  "success": true,
+  "projectFilePath": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\MakeYourTrip.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\rsath\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.5\\microsoft.aspnetcore.openapi.7.0.5.nupkg.sha512",
+    "C:\\Users\\rsath\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "C:\\Users\\rsath\\.nuget\\packages\\microsoft.openapi\\1.4.3\\microsoft.openapi.1.4.3.nupkg.sha512",
+    "C:\\Users\\rsath\\.nuget\\packages\\swashbuckle.aspnetcore\\6.4.0\\swashbuckle.aspnetcore.6.4.0.nupkg.sha512",
+    "C:\\Users\\rsath\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.4.0\\swashbuckle.aspnetcore.swagger.6.4.0.nupkg.sha512",
+    "C:\\Users\\rsath\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.4.0\\swashbuckle.aspnetcore.swaggergen.6.4.0.nupkg.sha512",
+    "C:\\Users\\rsath\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.4.0\\swashbuckle.aspnetcore.swaggerui.6.4.0.nupkg.sha512"
+  ],
+  "logs": []
+}
