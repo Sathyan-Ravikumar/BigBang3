@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "Hash": "c3R4qNI62Tm8WTNPz96J974V5PnNDpBH3qtqT99pTXw=",
+  "Source": "MakeYourTrip",
+  "BasePath": "_content/MakeYourTrip",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "MakeYourTrip\\wwwroot",
+      "Source": "MakeYourTrip",
+      "ContentRoot": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\",
+      "BasePath": "_content/MakeYourTrip",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\AdminImage\\xyz",
+      "SourceId": "MakeYourTrip",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\",
+      "BasePath": "_content/MakeYourTrip",
+      "RelativePath": "AdminImage/xyz",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\AdminImage\\xyz"
+    }
+  ]
+}
