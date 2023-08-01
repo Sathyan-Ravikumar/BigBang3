@@ -11,7 +11,7 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddDbContext<MackYourTripNewContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("SQLConnection")));
+builder.Services.AddDbContext<MakeYourTripContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("SQLConnection")));
 builder.Services.AddScoped<IAdminImageUpload, AdminImageUploadService>();
 var app = builder.Build();
 

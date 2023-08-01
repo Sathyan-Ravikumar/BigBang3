@@ -11,7 +11,7 @@ public partial class ItineraryDetail
 
     public string? DayNumber { get; set; }
 
-    public string? Activites { get; set; }
+    public string? Activities { get; set; }
 
     public string? Time { get; set; }
 

@@ -19,7 +19,7 @@ public partial class Package
 
     public string? PlaceImage { get; set; }
 
-    public virtual ICollection<Food> Foods { get; set; } = new List<Food>();
+    public virtual ICollection<BookingTrip> BookingTrips { get; set; } = new List<BookingTrip>();
 
     public virtual ICollection<Hotel> Hotels { get; set; } = new List<Hotel>();
 

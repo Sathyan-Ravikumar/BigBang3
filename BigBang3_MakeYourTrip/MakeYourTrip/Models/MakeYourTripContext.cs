@@ -4,13 +4,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MakeYourTrip.Models;
 
-public partial class MackYourTripNewContext : DbContext
+public partial class MakeYourTripContext : DbContext
 {
-    public MackYourTripNewContext()
+    public MakeYourTripContext()
     {
     }
 
-    public MackYourTripNewContext(DbContextOptions<MackYourTripNewContext> options)
+    public MakeYourTripContext(DbContextOptions<MakeYourTripContext> options)
         : base(options)
     {
     }
@@ -20,8 +20,6 @@ public partial class MackYourTripNewContext : DbContext
     public virtual DbSet<BookingTrip> BookingTrips { get; set; }
 
     public virtual DbSet<Feedback> Feedbacks { get; set; }
-
-    public virtual DbSet<Food> Foods { get; set; }
 
     public virtual DbSet<Hotel> Hotels { get; set; }
 
@@ -33,79 +31,71 @@ public partial class MackYourTripNewContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("data source = .\\SQLEXPRESS; initial catalog = MackYourTripNew; integrated security=SSPI;TrustServerCertificate=True;");
+        => optionsBuilder.UseSqlServer("data source=.\\SQLEXPRESS;Database=MakeYourTrip;integrated security=SSPI;TrustServerCertificate=True;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<AdminImageUpload>(entity =>
         {
-            entity.HasKey(e => e.ImageId).HasName("PK__AdminIma__7516F70CB6B1391E");
+            entity.HasKey(e => e.ImageId).HasName("PK__AdminIma__7516F70C278CCC4D");
 
             entity.ToTable("AdminImageUpload");
 
             entity.HasOne(d => d.User).WithMany(p => p.AdminImageUploads)
                 .HasForeignKey(d => d.UserId)
-                .HasConstraintName("FK__AdminImag__UserI__4BAC3F29");
+                .HasConstraintName("FK__AdminImag__UserI__4E88ABD4");
         });
 
         modelBuilder.Entity<BookingTrip>(entity =>
         {
-            entity.HasKey(e => e.BookingTripid).HasName("PK__BookingT__5AF2DFD1B3336F86");
+            entity.HasKey(e => e.BookingTripId).HasName("PK__BookingT__5AF3DBC94F766735");
 
             entity.ToTable("BookingTrip");
 
-            entity.Property(e => e.DateOfTheTrip).HasColumnType("date");
-            entity.Property(e => e.DateofBooking)
+            entity.Property(e => e.DateOfBooking)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime");
+            entity.Property(e => e.DateOfTheTrip).HasColumnType("date");
             entity.Property(e => e.TotalAmount).HasColumnType("money");
+
+            entity.HasOne(d => d.Package).WithMany(p => p.BookingTrips)
+                .HasForeignKey(d => d.PackageId)
+                .HasConstraintName("FK__BookingTr__Packa__59FA5E80");
 
             entity.HasOne(d => d.User).WithMany(p => p.BookingTrips)
                 .HasForeignKey(d => d.UserId)
-                .HasConstraintName("FK__BookingTr__UserI__5165187F");
+                .HasConstraintName("FK__BookingTr__UserI__59063A47");
         });
 
         modelBuilder.Entity<Feedback>(entity =>
         {
-            entity.HasKey(e => e.Feedbackid).HasName("PK__Feedback__6A4AE1FE8ED0D31A");
+            entity.HasKey(e => e.FeedbackId).HasName("PK__Feedback__6A4BEDD62C7121D9");
 
             entity.ToTable("Feedback");
 
+            entity.Property(e => e.Rating).HasColumnType("decimal(3, 1)");
+
             entity.HasOne(d => d.User).WithMany(p => p.Feedbacks)
                 .HasForeignKey(d => d.UserId)
-                .HasConstraintName("FK__Feedback__UserId__4E88ABD4");
-        });
-
-        modelBuilder.Entity<Food>(entity =>
-        {
-            entity.HasKey(e => e.FoodId).HasName("PK__Food__856DB3EB1BF5C74B");
-
-            entity.ToTable("Food");
-
-            entity.Property(e => e.FoodId).ValueGeneratedNever();
-            entity.Property(e => e.FoodPrice).HasColumnType("money");
-            entity.Property(e => e.FoodType).HasMaxLength(50);
-
-            entity.HasOne(d => d.Package).WithMany(p => p.Foods)
-                .HasForeignKey(d => d.PackageId)
-                .HasConstraintName("FK__Food__PackageId__5DCAEF64");
+                .HasConstraintName("FK__Feedback__UserId__52593CB8");
         });
 
         modelBuilder.Entity<Hotel>(entity =>
         {
-            entity.HasKey(e => e.Hotelid).HasName("PK__Hotels__46033FE796474F95");
+            entity.HasKey(e => e.HotelId).HasName("PK__Hotels__46023BDF5B730C1C");
 
-            entity.Property(e => e.Hotelid).ValueGeneratedNever();
+            entity.Property(e => e.HotelId).ValueGeneratedNever();
             entity.Property(e => e.HotelPrice).HasColumnType("money");
+            entity.Property(e => e.HotelRating).HasColumnType("decimal(3, 1)");
 
             entity.HasOne(d => d.Package).WithMany(p => p.Hotels)
                 .HasForeignKey(d => d.PackageId)
-                .HasConstraintName("FK__Hotels__PackageI__5AEE82B9");
+                .HasConstraintName("FK__Hotels__PackageI__628FA481");
         });
 
         modelBuilder.Entity<ItineraryDetail>(entity =>
         {
-            entity.HasKey(e => e.ItineraryId).HasName("PK__Itinerar__361216C611553432");
+            entity.HasKey(e => e.ItineraryId).HasName("PK__Itinerar__361216C60FC8B637");
 
             entity.Property(e => e.ItineraryId).ValueGeneratedNever();
             entity.Property(e => e.DayNumber)
@@ -115,40 +105,35 @@ public partial class MackYourTripNewContext : DbContext
 
             entity.HasOne(d => d.Package).WithMany(p => p.ItineraryDetails)
                 .HasForeignKey(d => d.PackageId)
-                .HasConstraintName("FK__Itinerary__Packa__5812160E");
+                .HasConstraintName("FK__Itinerary__Packa__5FB337D6");
         });
 
         modelBuilder.Entity<Package>(entity =>
         {
-            entity.HasKey(e => e.PackageId).HasName("PK__Package__322035CC2E336205");
+            entity.HasKey(e => e.PackageId).HasName("PK__Package__322035CC4F7E7329");
 
             entity.ToTable("Package");
 
             entity.Property(e => e.PackageId).ValueGeneratedNever();
             entity.Property(e => e.Duration).HasMaxLength(50);
             entity.Property(e => e.PackagePrice).HasColumnType("money");
-            entity.Property(e => e.Place)
-                .HasMaxLength(50)
-                .HasColumnName("place");
+            entity.Property(e => e.Place).HasMaxLength(50);
 
             entity.HasOne(d => d.User).WithMany(p => p.Packages)
                 .HasForeignKey(d => d.UserId)
-                .HasConstraintName("FK__Package__UserId__5535A963");
+                .HasConstraintName("FK__Package__UserId__5629CD9C");
         });
 
         modelBuilder.Entity<User>(entity =>
         {
-            entity.HasKey(e => e.UserId).HasName("PK__User__1788CC4CC739EE83");
+            entity.HasKey(e => e.UserId).HasName("PK__User__1788CC4CA9809446");
 
             entity.ToTable("User");
 
-            entity.Property(e => e.Contactno).HasColumnName("contactno");
             entity.Property(e => e.Email).HasMaxLength(40);
             entity.Property(e => e.Gender).HasMaxLength(10);
-            entity.Property(e => e.Idproof).HasColumnName("idproof");
-            entity.Property(e => e.Password)
-                .HasMaxLength(20)
-                .HasColumnName("password");
+            entity.Property(e => e.Name).HasMaxLength(100);
+            entity.Property(e => e.Password).HasColumnName("password");
             entity.Property(e => e.Role).HasMaxLength(30);
             entity.Property(e => e.StatusForAgents).HasMaxLength(30);
         });

@@ -9,8 +9,8 @@ namespace MakeYourTrip.Repository.Services
     public class AdminImageUploadService : IAdminImageUpload
     {
 
-        private readonly MackYourTripNewContext? _dbcontext;
-        public AdminImageUploadService(MackYourTripNewContext dbcontext)
+        private readonly MakeYourTripContext? _dbcontext;
+        public AdminImageUploadService(MakeYourTripContext dbcontext)
         {
             _dbcontext = dbcontext;
         }

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "c3R4qNI62Tm8WTNPz96J974V5PnNDpBH3qtqT99pTXw=",
+  "Hash": "Ug+XIIPE4YnLxTZh/5I1Ur65aQ3darM12GRy4zTypr8=",
   "Source": "MakeYourTrip",
   "BasePath": "_content/MakeYourTrip",
   "Mode": "Default",
@@ -15,23 +15,5 @@
       "Pattern": "**"
     }
   ],
-  "Assets": [
-    {
-      "Identity": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\AdminImage\\xyz",
-      "SourceId": "MakeYourTrip",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\",
-      "BasePath": "_content/MakeYourTrip",
-      "RelativePath": "AdminImage/xyz",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\AdminImage\\xyz"
-    }
-  ]
+  "Assets": []
 }

@@ -19,9 +19,9 @@ public partial class User
 
     public string? Address { get; set; }
 
-    public long? Contactno { get; set; }
+    public long? ContactNo { get; set; }
 
-    public string? Idproof { get; set; }
+    public string? IdProof { get; set; }
 
     public string? AgencyName { get; set; }
 
