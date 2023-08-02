@@ -13,6 +13,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<MakeYourTripContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("SQLConnection")));
 builder.Services.AddScoped<IAdminImageUpload, AdminImageUploadService>();
+builder.Services.AddScoped<IUser,UserService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

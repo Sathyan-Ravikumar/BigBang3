@@ -6,7 +6,9 @@ namespace MakeYourTrip.Repository.Interface
 {
     public interface IAdminImageUpload
     {
-        public Task<AdminImageUpload> PostAdminImageUpload([FromForm] FileModel file, AdminImageUpload Adi);
+        public Task<string> PostAdminImageUpload(IFormFile files);
+        public Task<List<AdminImageUpload>> Postall(AdminImageUpload aiu);
+
 
     }
 }

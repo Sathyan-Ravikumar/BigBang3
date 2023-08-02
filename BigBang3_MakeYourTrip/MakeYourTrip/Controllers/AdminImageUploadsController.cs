@@ -21,23 +21,25 @@ namespace MakeYourTrip.Controllers
         {
             _context = context;
         }
-
-       
-
         // POST: api/AdminImageUploads
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<AdminImageUpload>> PostAdminImageUpload([FromForm] FileModel file, AdminImageUpload Adi)
+        public async Task<ActionResult<string>> PostAdminImageUpload( IFormFile files)
         {
             try
-
             {
-                return Ok(await _context.PostAdminImageUpload(file,Adi));
+                return Ok(await _context.PostAdminImageUpload(files));
             }
             catch (Exception ex)
             {
                 return NotFound(ex.Message);
             }
+        }
+
+        [HttpPost("AllAdminColumn")]
+        public async Task<ActionResult<List<AdminImageUpload>>> Postall(AdminImageUpload aiu)
+        {
+            return await _context.Postall(aiu);
         }
 
         

@@ -1,0 +1,19 @@
+{
+  "Version": 1,
+  "Hash": "qGkahASSohsy9tQ0RmgfyQuHn45Qotnw5yrNudJ1qHo=",
+  "Source": "UserMakeYourTrip",
+  "BasePath": "_content/UserMakeYourTrip",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "UserMakeYourTrip\\wwwroot",
+      "Source": "UserMakeYourTrip",
+      "ContentRoot": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\UserMakeYourTrip\\wwwroot\\",
+      "BasePath": "_content/UserMakeYourTrip",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": []
+}
