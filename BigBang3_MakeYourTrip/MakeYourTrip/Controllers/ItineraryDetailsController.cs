@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MakeYourTrip.Models;
 using MakeYourTrip.Repository.Interface;
+using MakeYourTrip.Temp;
 
 namespace MakeYourTrip.Controllers
 {
@@ -25,14 +26,24 @@ namespace MakeYourTrip.Controllers
         [HttpGet]
         public async Task<ActionResult<List<ItineraryDetail>>> GetItineraryDetails()
         {
-            return await _context.GetItineraryDetails();
+            var images = await _context.GetItineraryDetails();
+            if (images == null)
+            {
+                return NotFound();
+            }
+            return new JsonResult(images);
         }
 
         // GET: api/ItineraryDetails/5
         [HttpGet("{id}")]
         public async Task<ActionResult<ItineraryDetail>> GetItineraryDetail(int id)
         {
-            return await _context.GetItineraryDetail(id);
+            var images = await _context.GetItineraryDetail(id);
+            if (images == null)
+            {
+                return NotFound();
+            }
+            return new JsonResult(images);
         }
 
         // PUT: api/ItineraryDetails/5
@@ -46,9 +57,9 @@ namespace MakeYourTrip.Controllers
         // POST: api/ItineraryDetails
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<List<ItineraryDetail>>> PostItineraryDetail(ItineraryDetail itineraryDetail)
+        public async Task<ActionResult<List<ItineraryDetail>>> PostItineraryDetail([FromForm] ItineraryImage II)
         {
-            return await _context.PostItineraryDetail(itineraryDetail);
+            return await _context.PostItineraryDetail(II);
         }
 
         // DELETE: api/ItineraryDetails/5

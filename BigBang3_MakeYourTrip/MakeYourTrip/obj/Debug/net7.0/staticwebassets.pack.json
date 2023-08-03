@@ -13,8 +13,24 @@
       "PackagePath": "staticwebassets\\AdminImage\\kanna231556549.png"
     },
     {
+      "Id": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\IdProof\\prawns231919184.jpg",
+      "PackagePath": "staticwebassets\\IdProof\\prawns231919184.jpg"
+    },
+    {
+      "Id": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\Itinerary\\bg2-cut232734516.jpg",
+      "PackagePath": "staticwebassets\\Itinerary\\bg2-cut232734516.jpg"
+    },
+    {
       "Id": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\Package\\chicken-ma233752393.png",
       "PackagePath": "staticwebassets\\Package\\chicken-ma233752393.png"
+    },
+    {
+      "Id": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\Package\\noodles-wi232239928.jpg",
+      "PackagePath": "staticwebassets\\Package\\noodles-wi232239928.jpg"
+    },
+    {
+      "Id": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\hotels\\paratta235440878.jpeg",
+      "PackagePath": "staticwebassets\\hotels\\paratta235440878.jpeg"
     },
     {
       "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.MakeYourTrip.Microsoft.AspNetCore.StaticWebAssets.props",

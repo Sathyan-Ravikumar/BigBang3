@@ -16,8 +16,6 @@ namespace MakeYourTrip.Temp
 
         public string? Description { get; set; }
 
-        public string? PlaceImage { get; set; }
-
         [NotMapped]
         public IFormFile? PackImg { get; set; }
     }

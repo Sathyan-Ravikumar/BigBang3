@@ -16,6 +16,7 @@ builder.Services.AddScoped<IAdminImageUpload, AdminImageUploadService>();
 builder.Services.AddScoped<IPackage, PackageService>();
 builder.Services.AddScoped<IFeedback,FeedbackService>();
 builder.Services.AddScoped<IItinerary,ItineraryService>();
+builder.Services.AddScoped<IHotel, HotelService>();
 builder.Services.AddScoped<IUser,UserService>();
 
 builder.Services.AddCors(opts =>

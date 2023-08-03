@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "lmd2K5KyqtSDu9Uy3yEgqwO1VQUZIoTg8OFvOf6Okxk=",
+  "Hash": "DA7/FgnkMjCXTpuO8Aixd/fYExSqfxRjuDAAbUhICkQ=",
   "Source": "MakeYourTrip",
   "BasePath": "_content/MakeYourTrip",
   "Mode": "Default",
@@ -68,6 +68,57 @@
       "OriginalItemSpec": "wwwroot\\AdminImage\\kanna231556549.png"
     },
     {
+      "Identity": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\hotels\\paratta235440878.jpeg",
+      "SourceId": "MakeYourTrip",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\",
+      "BasePath": "_content/MakeYourTrip",
+      "RelativePath": "hotels/paratta235440878.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\hotels\\paratta235440878.jpeg"
+    },
+    {
+      "Identity": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\IdProof\\prawns231919184.jpg",
+      "SourceId": "MakeYourTrip",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\",
+      "BasePath": "_content/MakeYourTrip",
+      "RelativePath": "IdProof/prawns231919184.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\IdProof\\prawns231919184.jpg"
+    },
+    {
+      "Identity": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\Itinerary\\bg2-cut232734516.jpg",
+      "SourceId": "MakeYourTrip",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\",
+      "BasePath": "_content/MakeYourTrip",
+      "RelativePath": "Itinerary/bg2-cut232734516.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Itinerary\\bg2-cut232734516.jpg"
+    },
+    {
       "Identity": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\Package\\chicken-ma233752393.png",
       "SourceId": "MakeYourTrip",
       "SourceType": "Discovered",
@@ -83,6 +134,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Package\\chicken-ma233752393.png"
+    },
+    {
+      "Identity": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\Package\\noodles-wi232239928.jpg",
+      "SourceId": "MakeYourTrip",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\",
+      "BasePath": "_content/MakeYourTrip",
+      "RelativePath": "Package/noodles-wi232239928.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Package\\noodles-wi232239928.jpg"
     }
   ]
 }

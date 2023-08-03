@@ -12,6 +12,8 @@ using System.Security.Claims;
 using System.Text;
 using System.Security.Cryptography;
 using System.IdentityModel.Tokens.Jwt;
+using MakeYourTrip.Temp;
+using Microsoft.Extensions.Hosting;
 
 namespace MakeYourTrip.Controllers
 {
@@ -28,7 +30,7 @@ namespace MakeYourTrip.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<ActionResult<string>> Register(User user)
+        public async Task<ActionResult<string>> Register([FromForm] UserIdProof uip)
         {
             if (_userRepository == null)
             {
@@ -36,19 +38,18 @@ namespace MakeYourTrip.Controllers
             }
 
             // Encrypt the password before storing it
-            user.Password = Encrypt(user.Password);
-
+            uip.Password = Encrypt(uip.Password);
             // Set IsActive status based on the role
-            if (user.Role == "Agent")
+            if (uip.Role == "Agent")
             {
-                user.StatusForAgents = "InActive"; // Pending approval for Agents
+                uip.StatusForAgents = "InActive"; // Pending approval for Agents
             }
             else
             {
-                user.StatusForAgents = "Active"; // Active for other roles (e.g., "User")
+                uip.StatusForAgents = "Active"; // Active for other roles (e.g., "User")
             }
 
-            var createdUser = await _userRepository.AddUser(user);
+            var createdUser = await _userRepository.AddUser(uip);
 
             // Generate JWT token with user details
             var token = GenerateJwtToken(createdUser);
@@ -239,5 +240,7 @@ namespace MakeYourTrip.Controllers
                 }
             }
         }
+
+        
     }
 }
