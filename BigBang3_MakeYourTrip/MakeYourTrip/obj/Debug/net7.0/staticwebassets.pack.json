@@ -1,36 +1,20 @@
 {
   "Files": [
     {
-      "Id": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\AdminImage\\ sathya",
-      "PackagePath": "staticwebassets\\AdminImage"
+      "Id": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\AdminImage\\bg-hero232637253.jpg",
+      "PackagePath": "staticwebassets\\AdminImage\\bg-hero232637253.jpg"
     },
     {
-      "Id": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\AdminImage\\0da709ec-83ec-4d86-96dc-15e0994d9628.png",
-      "PackagePath": "staticwebassets\\AdminImage\\0da709ec-83ec-4d86-96dc-15e0994d9628.png"
+      "Id": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\AdminImage\\bg2-cut233649392.jpg",
+      "PackagePath": "staticwebassets\\AdminImage\\bg2-cut233649392.jpg"
     },
     {
-      "Id": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\AdminImage\\20230802232645.jpg",
-      "PackagePath": "staticwebassets\\AdminImage\\20230802232645.jpg"
+      "Id": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\AdminImage\\kanna231556549.png",
+      "PackagePath": "staticwebassets\\AdminImage\\kanna231556549.png"
     },
     {
-      "Id": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\AdminImage\\23254597_christmas_2012_new_2857_20230802233113.jpg",
-      "PackagePath": "staticwebassets\\AdminImage\\23254597_christmas_2012_new_2857_20230802233113.jpg"
-    },
-    {
-      "Id": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\AdminImage\\3476a680-3a2b-4acf-beb0-78b8eb2539b8.jpg",
-      "PackagePath": "staticwebassets\\AdminImage\\3476a680-3a2b-4acf-beb0-78b8eb2539b8.jpg"
-    },
-    {
-      "Id": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\AdminImage\\9d2469c1-2ceb-4e8f-8523-29abaa2a6827.png",
-      "PackagePath": "staticwebassets\\AdminImage\\9d2469c1-2ceb-4e8f-8523-29abaa2a6827.png"
-    },
-    {
-      "Id": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\AdminImage\\image",
-      "PackagePath": "staticwebassets\\AdminImage"
-    },
-    {
-      "Id": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\AdminImage\\screenshot",
-      "PackagePath": "staticwebassets\\AdminImage"
+      "Id": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\Package\\chicken-ma233752393.png",
+      "PackagePath": "staticwebassets\\Package\\chicken-ma233752393.png"
     },
     {
       "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.MakeYourTrip.Microsoft.AspNetCore.StaticWebAssets.props",

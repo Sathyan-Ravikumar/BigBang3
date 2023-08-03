@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "c/4q8oiYSwU3gm955GqAZOZA91D/RBIaG9gld/S1uXc=",
+  "Hash": "lmd2K5KyqtSDu9Uy3yEgqwO1VQUZIoTg8OFvOf6Okxk=",
   "Source": "MakeYourTrip",
   "BasePath": "_content/MakeYourTrip",
   "Mode": "Default",
@@ -17,12 +17,12 @@
   ],
   "Assets": [
     {
-      "Identity": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\AdminImage\\ sathya",
+      "Identity": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\AdminImage\\bg2-cut233649392.jpg",
       "SourceId": "MakeYourTrip",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\",
       "BasePath": "_content/MakeYourTrip",
-      "RelativePath": "AdminImage/ sathya",
+      "RelativePath": "AdminImage/bg2-cut233649392.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -31,15 +31,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\AdminImage\\ sathya"
+      "OriginalItemSpec": "wwwroot\\AdminImage\\bg2-cut233649392.jpg"
     },
     {
-      "Identity": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\AdminImage\\0da709ec-83ec-4d86-96dc-15e0994d9628.png",
+      "Identity": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\AdminImage\\bg-hero232637253.jpg",
       "SourceId": "MakeYourTrip",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\",
       "BasePath": "_content/MakeYourTrip",
-      "RelativePath": "AdminImage/0da709ec-83ec-4d86-96dc-15e0994d9628.png",
+      "RelativePath": "AdminImage/bg-hero232637253.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -48,15 +48,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\AdminImage\\0da709ec-83ec-4d86-96dc-15e0994d9628.png"
+      "OriginalItemSpec": "wwwroot\\AdminImage\\bg-hero232637253.jpg"
     },
     {
-      "Identity": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\AdminImage\\20230802232645.jpg",
+      "Identity": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\AdminImage\\kanna231556549.png",
       "SourceId": "MakeYourTrip",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\",
       "BasePath": "_content/MakeYourTrip",
-      "RelativePath": "AdminImage/20230802232645.jpg",
+      "RelativePath": "AdminImage/kanna231556549.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -65,15 +65,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\AdminImage\\20230802232645.jpg"
+      "OriginalItemSpec": "wwwroot\\AdminImage\\kanna231556549.png"
     },
     {
-      "Identity": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\AdminImage\\23254597_christmas_2012_new_2857_20230802233113.jpg",
+      "Identity": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\Package\\chicken-ma233752393.png",
       "SourceId": "MakeYourTrip",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\",
       "BasePath": "_content/MakeYourTrip",
-      "RelativePath": "AdminImage/23254597_christmas_2012_new_2857_20230802233113.jpg",
+      "RelativePath": "Package/chicken-ma233752393.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -82,75 +82,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\AdminImage\\23254597_christmas_2012_new_2857_20230802233113.jpg"
-    },
-    {
-      "Identity": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\AdminImage\\3476a680-3a2b-4acf-beb0-78b8eb2539b8.jpg",
-      "SourceId": "MakeYourTrip",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\",
-      "BasePath": "_content/MakeYourTrip",
-      "RelativePath": "AdminImage/3476a680-3a2b-4acf-beb0-78b8eb2539b8.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\AdminImage\\3476a680-3a2b-4acf-beb0-78b8eb2539b8.jpg"
-    },
-    {
-      "Identity": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\AdminImage\\9d2469c1-2ceb-4e8f-8523-29abaa2a6827.png",
-      "SourceId": "MakeYourTrip",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\",
-      "BasePath": "_content/MakeYourTrip",
-      "RelativePath": "AdminImage/9d2469c1-2ceb-4e8f-8523-29abaa2a6827.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\AdminImage\\9d2469c1-2ceb-4e8f-8523-29abaa2a6827.png"
-    },
-    {
-      "Identity": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\AdminImage\\image",
-      "SourceId": "MakeYourTrip",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\",
-      "BasePath": "_content/MakeYourTrip",
-      "RelativePath": "AdminImage/image",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\AdminImage\\image"
-    },
-    {
-      "Identity": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\AdminImage\\screenshot",
-      "SourceId": "MakeYourTrip",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\",
-      "BasePath": "_content/MakeYourTrip",
-      "RelativePath": "AdminImage/screenshot",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\AdminImage\\screenshot"
+      "OriginalItemSpec": "wwwroot\\Package\\chicken-ma233752393.png"
     }
   ]
 }

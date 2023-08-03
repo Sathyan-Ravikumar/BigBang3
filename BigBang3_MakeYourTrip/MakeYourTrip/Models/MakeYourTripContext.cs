@@ -37,7 +37,7 @@ public partial class MakeYourTripContext : DbContext
     {
         modelBuilder.Entity<AdminImageUpload>(entity =>
         {
-            entity.HasKey(e => e.ImageId).HasName("PK__AdminIma__7516F70C278CCC4D");
+            entity.HasKey(e => e.ImageId).HasName("PK__AdminIma__7516F70C0D4E32B1");
 
             entity.ToTable("AdminImageUpload");
 
@@ -48,7 +48,7 @@ public partial class MakeYourTripContext : DbContext
 
         modelBuilder.Entity<BookingTrip>(entity =>
         {
-            entity.HasKey(e => e.BookingTripId).HasName("PK__BookingT__5AF3DBC94F766735");
+            entity.HasKey(e => e.BookingTripId).HasName("PK__BookingT__5AF3DBC9BD01CF89");
 
             entity.ToTable("BookingTrip");
 
@@ -69,7 +69,7 @@ public partial class MakeYourTripContext : DbContext
 
         modelBuilder.Entity<Feedback>(entity =>
         {
-            entity.HasKey(e => e.FeedbackId).HasName("PK__Feedback__6A4BEDD62C7121D9");
+            entity.HasKey(e => e.FeedbackId).HasName("PK__Feedback__6A4BEDD69702CDC7");
 
             entity.ToTable("Feedback");
 
@@ -82,9 +82,8 @@ public partial class MakeYourTripContext : DbContext
 
         modelBuilder.Entity<Hotel>(entity =>
         {
-            entity.HasKey(e => e.HotelId).HasName("PK__Hotels__46023BDF5B730C1C");
+            entity.HasKey(e => e.HotelId).HasName("PK__Hotels__46023BDF97DB1676");
 
-            entity.Property(e => e.HotelId).ValueGeneratedNever();
             entity.Property(e => e.HotelPrice).HasColumnType("money");
             entity.Property(e => e.HotelRating).HasColumnType("decimal(3, 1)");
 
@@ -95,9 +94,8 @@ public partial class MakeYourTripContext : DbContext
 
         modelBuilder.Entity<ItineraryDetail>(entity =>
         {
-            entity.HasKey(e => e.ItineraryId).HasName("PK__Itinerar__361216C60FC8B637");
+            entity.HasKey(e => e.ItineraryId).HasName("PK__Itinerar__361216C6217B8B75");
 
-            entity.Property(e => e.ItineraryId).ValueGeneratedNever();
             entity.Property(e => e.DayNumber)
                 .HasMaxLength(20)
                 .HasColumnName("Day_Number");
@@ -110,11 +108,10 @@ public partial class MakeYourTripContext : DbContext
 
         modelBuilder.Entity<Package>(entity =>
         {
-            entity.HasKey(e => e.PackageId).HasName("PK__Package__322035CC4F7E7329");
+            entity.HasKey(e => e.PackageId).HasName("PK__Package__322035CC9B8B2AB7");
 
             entity.ToTable("Package");
 
-            entity.Property(e => e.PackageId).ValueGeneratedNever();
             entity.Property(e => e.Duration).HasMaxLength(50);
             entity.Property(e => e.PackagePrice).HasColumnType("money");
             entity.Property(e => e.Place).HasMaxLength(50);
@@ -126,7 +123,7 @@ public partial class MakeYourTripContext : DbContext
 
         modelBuilder.Entity<User>(entity =>
         {
-            entity.HasKey(e => e.UserId).HasName("PK__User__1788CC4CA9809446");
+            entity.HasKey(e => e.UserId).HasName("PK__User__1788CC4C75A917AC");
 
             entity.ToTable("User");
 

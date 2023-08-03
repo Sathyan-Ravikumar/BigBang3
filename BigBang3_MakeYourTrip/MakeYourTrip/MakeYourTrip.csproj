@@ -25,6 +25,7 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\AdminImage\" />
+    <Folder Include="wwwroot\Package\" />
   </ItemGroup>
 
 </Project>

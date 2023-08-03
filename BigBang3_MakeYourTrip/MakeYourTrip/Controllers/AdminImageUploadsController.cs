@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using MakeYourTrip.Models;
 using MakeYourTrip.Repository.Interface;
 using MakeYourTrip.NewFolder;
+using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Hosting;
 
 namespace MakeYourTrip.Controllers
 {
@@ -23,7 +25,7 @@ namespace MakeYourTrip.Controllers
         }
         // POST: api/AdminImageUploads
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
+        /*[HttpPost]
         public async Task<ActionResult<string>> PostAdminImageUpload( IFormFile files)
         {
             try
@@ -34,14 +36,37 @@ namespace MakeYourTrip.Controllers
             {
                 return NotFound(ex.Message);
             }
-        }
+        }*/
 
         [HttpPost("AllAdminColumn")]
-        public async Task<ActionResult<List<AdminImageUpload>>> Postall(AdminImageUpload aiu)
+        public async Task<ActionResult<List<AdminImageUpload>>> Postall([FromForm] FileModel aiu)
         {
             return await _context.Postall(aiu);
         }
 
-        
+        [HttpGet("GetAllDetailsFromAdminTable")]
+        public async Task<ActionResult<List<AdminImageUpload>>> Getall()
+        {
+            var images = await _context.Getall();
+            if (images == null)
+            {
+                return NotFound();
+            }
+            return new JsonResult(images);
+
+        }
+
+        [HttpGet("GetById")]
+        public async Task<ActionResult<AdminImageUpload>> Getadminid(int id)
+        {
+
+            var images = await _context.Getadminid(id);
+            if (images == null)
+            {
+                return NotFound();
+            }
+            return new JsonResult(images);
+        }
+
     }
 }

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MakeYourTrip.Models;
 using MakeYourTrip.Repository.Interface;
+using MakeYourTrip.Temp;
 
 namespace MakeYourTrip.Controllers
 {
@@ -25,14 +26,24 @@ namespace MakeYourTrip.Controllers
         [HttpGet]
         public async Task<ActionResult<List<Package>>> GetPackages()
         {
-            return await _context.GetPackages();
+            var images = await _context.GetPackages();
+            if (images == null)
+            {
+                return NotFound();
+            }
+            return new JsonResult(images);
         }
 
         // GET: api/Packages/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Package>> GetPackage(int id)
         {
-            return await _context.GetPackage(id);
+            var images = await _context.GetPackage(id);
+            if (images == null)
+            {
+                return NotFound();
+            }
+            return new JsonResult(images);
         }
 
         // PUT: api/Packages/5
@@ -46,9 +57,9 @@ namespace MakeYourTrip.Controllers
         // POST: api/Packages
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<List<Package>>> PostPackage(Package package)
+        public async Task<ActionResult<List<Package>>> PostPackage([FromForm] PackageImage pi)
         {
-            return await _context.PostPackage(package);
+            return await _context.PostPackage(pi);
         }
 
         // DELETE: api/Packages/5
