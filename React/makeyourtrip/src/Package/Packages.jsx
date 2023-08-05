@@ -6,7 +6,8 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-
+import {Link} from 'react-router-dom'
+import Hotel from './Itinerary'
 function Package() {
   const [file, setFile] = useState();
   const [uploadedFileData, setUploadedFileData] = useState([]);
@@ -42,11 +43,12 @@ function Package() {
   return (
     <div style={{ display: 'flex', flexWrap: 'wrap' }}>
       {uploadedFileData.map((item) => (
+        
         <Card key={item.packageId} sx={{ flex: '0 1 345px', margin: '20px' }}>
           <CardMedia
             sx={{ height: 140 }}
             image={`data:image/jpeg;base64,${item.placeImage}`}
-            title={item.title}
+            
           />
           <CardContent>
             <Typography gutterBottom variant="h5" component="div">
@@ -63,10 +65,13 @@ function Package() {
             </Typography>
           </CardContent>
           <CardActions>
-            <Button size="small">Select</Button>
+         
+              <Button size="small">Select</Button>
+           
           </CardActions>
         </Card>
       ))}
+      <Hotel/>
     </div>
   );
 }

@@ -8,7 +8,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Rating from '@mui/material/Rating';
 
-function Hotel() {
+function Itinerary() {
   const [file, setFile] = useState();
   const [uploadedFileData, setUploadedFileData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -16,7 +16,7 @@ function Hotel() {
 
   const gethotel = async () => {
     try {
-      const res = await axios.get('/Logic/Hotelbyid?packid=1', {
+      const res = await axios.get('/Logic/ItineraryByPackId?packid=1', {
         responseType: 'json',
       });
       console.log(res);
@@ -41,33 +41,33 @@ function Hotel() {
   }, []);
 
   return (
-    <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+    <div style={{ display: 'flex' }}>
       {uploadedFileData.map((item) => (
         
         <Card key={item.hotelId} sx={{ flex: '0 1 345px', margin: '20px' }}>
           <CardMedia
             sx={{ height: 140 }}
-            image={`data:image/jpeg;base64,${item.hotelsImage}`}
-             
+            image={`data:image/jpeg;base64,${item.itineraryImage}`}  
           />
           <CardContent>
             <Typography gutterBottom variant="h5" component="div">
-              {item.hotelName} 
+              {item.itineraryPlace} 
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              {item.hotelPrice}
+              {item.activities}
             </Typography>
-            <Rating name="read-only" value={item.hotelRating} readOnly />
+            <Typography variant="body2" color="text.secondary">
+              {item.dayNumber}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              {item.time}
+            </Typography>
           </CardContent>
-          <CardActions>
-         
-              <Button size="small">Select</Button>
-           
-          </CardActions>
+          
         </Card>
       ))}
     </div>
   );
 }
 
-export default Hotel;
+export default Itinerary;
