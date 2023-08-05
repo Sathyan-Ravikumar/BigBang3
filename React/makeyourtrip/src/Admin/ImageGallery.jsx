@@ -51,7 +51,7 @@ export default function TitlebarBelowMasonryImageList() {
         uploadedFileData.length > 0 && (
           <ImageList variant="masonry" cols={3} gap={8}>
             {uploadedFileData.map((item) => (
-              <ImageListItem >
+              <ImageListItem key={item.imageId} >
                 <img
                   src={`data:image/jpeg;base64,${item.imagePath}`}
                   alt={item.title}

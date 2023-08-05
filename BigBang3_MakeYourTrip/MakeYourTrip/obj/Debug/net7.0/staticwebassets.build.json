@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "T/zD1ks3ID0IJsJjVqwhD8vhBr92r/y6qPHgNp8p10o=",
+  "Hash": "mPktIECVl4VjcDKcqf4Ub91/q38KqohpyoQSO8iheuc=",
   "Source": "MakeYourTrip",
   "BasePath": "_content/MakeYourTrip",
   "Mode": "Default",
@@ -49,6 +49,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\AdminImage\\bg-hero232637253.jpg"
+    },
+    {
+      "Identity": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\AdminImage\\bg-hero233356899.jpg",
+      "SourceId": "MakeYourTrip",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\",
+      "BasePath": "_content/MakeYourTrip",
+      "RelativePath": "AdminImage/bg-hero233356899.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\AdminImage\\bg-hero233356899.jpg"
     },
     {
       "Identity": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\AdminImage\\kanna231556549.png",
@@ -170,6 +187,40 @@
       "OriginalItemSpec": "wwwroot\\AdminImage\\Screenshot235456612.png"
     },
     {
+      "Identity": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\hotels\\about-3233658568.jpg",
+      "SourceId": "MakeYourTrip",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\",
+      "BasePath": "_content/MakeYourTrip",
+      "RelativePath": "hotels/about-3233658568.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\hotels\\about-3233658568.jpg"
+    },
+    {
+      "Identity": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\hotels\\bg-hero234001363.jpg",
+      "SourceId": "MakeYourTrip",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\",
+      "BasePath": "_content/MakeYourTrip",
+      "RelativePath": "hotels/bg-hero234001363.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\hotels\\bg-hero234001363.jpg"
+    },
+    {
       "Identity": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\hotels\\paratta235440878.jpeg",
       "SourceId": "MakeYourTrip",
       "SourceType": "Discovered",
@@ -287,6 +338,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Itinerary\\bg2-cut232734516.jpg"
+    },
+    {
+      "Identity": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\Package\\background233840768.jpg",
+      "SourceId": "MakeYourTrip",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\",
+      "BasePath": "_content/MakeYourTrip",
+      "RelativePath": "Package/background233840768.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Package\\background233840768.jpg"
     },
     {
       "Identity": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\Package\\chicken-ma233752393.png",

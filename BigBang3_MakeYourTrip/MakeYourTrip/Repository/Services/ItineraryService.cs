@@ -19,7 +19,7 @@ namespace MakeYourTrip.Repository.Services
         }
         public async Task<List<ItineraryDetail>> GetItineraryDetails()
         {
-            var images = _dbcontext.ItineraryDetails.ToList();
+            var images = _dbcontext!.ItineraryDetails.ToList();
             var imageList = new List<ItineraryDetail>();
             foreach (var image in images)
             {
@@ -44,7 +44,7 @@ namespace MakeYourTrip.Repository.Services
         }
         public async Task<ItineraryDetail> GetItineraryDetail(int id)
         {
-            var images = _dbcontext.ItineraryDetails.ToList();
+            var images = _dbcontext!.ItineraryDetails.ToList();
             ItineraryDetail iti = images.SingleOrDefault(p => p.ItineraryId == id);
 
             var uploadsFolder = Path.Combine(_hostEnvironment.WebRootPath, "Itinerary");
@@ -87,15 +87,15 @@ namespace MakeYourTrip.Repository.Services
             itinerary.Time = II.Time;
             itinerary.ItineraryPlace = II.ItineraryPlace;
             itinerary.ItineraryImage = ImagePath;
-            var obj = await _dbcontext.ItineraryDetails.AddAsync(itinerary);
+            var obj = await _dbcontext!.ItineraryDetails.AddAsync(itinerary);
             await _dbcontext.SaveChangesAsync();
             return await _dbcontext.ItineraryDetails.ToListAsync();
         }
         public async Task<List<ItineraryDetail>> DeleteItineraryDetail(int id)
         {
 
-            var obj = await _dbcontext.ItineraryDetails.FindAsync(id);
-            _dbcontext.ItineraryDetails.Remove(obj);
+            var obj = await _dbcontext!.ItineraryDetails.FindAsync(id);
+            _dbcontext.ItineraryDetails.Remove(obj!);
             await _dbcontext.SaveChangesAsync();
             return await _dbcontext.ItineraryDetails.ToListAsync();
         }

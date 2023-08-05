@@ -41,7 +41,7 @@ namespace MakeYourTrip.Repository.Services
         }
         public async Task<Hotel> GetHotel(int id)
         {
-            var images = _dbcontext.Hotels.ToList();
+            var images = _dbcontext!.Hotels.ToList();
             Hotel hotelget = images.SingleOrDefault(p => p.HotelId == id);
             var uploadsFolder = Path.Combine(_hostEnvironment.WebRootPath, "hotels");
             var filePath = Path.Combine(uploadsFolder, hotelget.HotelsImage);
@@ -68,7 +68,7 @@ namespace MakeYourTrip.Repository.Services
             hot.HotelRating = hotel.HotelRating;
             hot.HotelPrice = hotel.HotelPrice;
             hot.HotelsImage = ImagePath;
-            var obj = await _dbcontext.Hotels.AddAsync(hot);
+            var obj = await _dbcontext!.Hotels.AddAsync(hot);
             await _dbcontext.SaveChangesAsync();
             return await _dbcontext.Hotels.ToListAsync();
         }
@@ -83,8 +83,8 @@ namespace MakeYourTrip.Repository.Services
         }
         public async Task<List<Hotel>> DeleteHotel(int id)
         {
-            var obj = await _dbcontext.Hotels.FindAsync(id);
-            _dbcontext.Hotels.Remove(obj);
+            var obj = await _dbcontext!.Hotels.FindAsync(id);
+            _dbcontext.Hotels.Remove(obj!);
             await _dbcontext.SaveChangesAsync();
             return await _dbcontext.Hotels.ToListAsync();
         }

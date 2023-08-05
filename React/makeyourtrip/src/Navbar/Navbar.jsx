@@ -21,7 +21,7 @@ import Login from '../Login/login';
 import Gallery from '../Admin/ImageGallery'
 import Req from '../Admin/AgentRequest'
 import Adminimg from '../Admin/adminpage'
-
+import Pack from '../Package/Packages'
 import { faComments ,faArrowRightFromBracket,faHouse,faCircleInfo,faLocationDot} from '@fortawesome/free-solid-svg-icons';
 const drawerWidth = 240;
 
@@ -185,10 +185,16 @@ export default function MiniDrawer() {
         </List> */}
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+
+        <div> 
         {/* <Login /> */}
         {/* <Gallery/> */}
         {/* <Req/> */}
         {/* <Adminimg/> */}
+        <Pack/>
+        </div>
+
+
       </Box>
     </Box>
   );

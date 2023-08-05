@@ -21,7 +21,7 @@ builder.Services.AddScoped<IFeedback,FeedbackService>();
 builder.Services.AddScoped<IItinerary,ItineraryService>();
 builder.Services.AddScoped<IHotel, HotelService>();
 builder.Services.AddScoped<IUser,UserService>();
-
+builder.Services.AddScoped<Ilogics, Logics>();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
