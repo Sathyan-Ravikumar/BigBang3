@@ -28,6 +28,35 @@ namespace MakeYourTrip.Controllers
         {
             _userRepository = userRepository;
         }
+        [HttpPost("registerUser")]
+        public async Task<ActionResult<string>> RegisterUser(User user)
+        {
+            if (_userRepository == null)
+            {
+                return Problem("User repository is null.");
+            }
+
+            // Encrypt the password before storing it
+            user.Password = Encrypt(user.Password);
+
+            // Set IsActive status based on the role
+            if (user.Role == "Agent")
+            {
+                user.StatusForAgents = "InActive"; // Pending approval for Agents
+            }
+            else
+            {
+                user.StatusForAgents = "Active"; // Active for other roles (e.g., "User")
+            }
+
+            var createdUser = await _userRepository.AddUseronly(user);
+
+            // Generate JWT token with user details
+            var token = GenerateJwtToken(createdUser);
+
+            // Return the token as part of the response
+            return Ok(token);
+        }
 
         [HttpPost("register")]
         public async Task<ActionResult<string>> Register([FromForm] UserIdProof uip)

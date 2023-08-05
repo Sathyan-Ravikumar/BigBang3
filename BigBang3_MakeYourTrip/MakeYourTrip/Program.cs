@@ -1,7 +1,10 @@
 using MakeYourTrip.Models;
 using MakeYourTrip.Repository.Interface;
 using MakeYourTrip.Repository.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +22,10 @@ builder.Services.AddScoped<IItinerary,ItineraryService>();
 builder.Services.AddScoped<IHotel, HotelService>();
 builder.Services.AddScoped<IUser,UserService>();
 
+
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
 builder.Services.AddCors(opts =>
 {
     opts.AddPolicy("AngularCORS", options =>
@@ -26,7 +33,18 @@ builder.Services.AddCors(opts =>
         options.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin();
     });
 });
-
+// Configure JWT authentication
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes("YourSecretKe12345678987ygdhsbdx46576289wqygjbsdy")),
+            ValidateIssuer = false,
+            ValidateAudience = false
+        };
+    });
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -37,8 +55,7 @@ if (app.Environment.IsDevelopment())
 }
 app.UseCors("AngularCORS");
 app.UseHttpsRedirection();
-
-app.UseAuthorization();
+app.UseAuthentication();
 
 app.MapControllers();
 

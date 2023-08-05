@@ -21,14 +21,20 @@ namespace MakeYourTrip.Repository.Services
                 _context = context;
                _hostEnvironment = hostEnvironment;
             }
+        public async Task<User> AddUseronly(User user)
+        {
+            _context.Users.Add(user);
+            await _context.SaveChangesAsync();
 
-            public async Task<User> AddUser([FromForm] UserIdProof uip)
+            return user;
+        }
+        public async Task<User> AddUser([FromForm] UserIdProof uip)
             {
                 string ImagePath = await SaveIdProof(uip.IdProofImg);
                 var obj = new User();
                 obj.Name = uip.Name;
                 obj.Email = uip.Email;
-                obj.Password = obj.Password;
+                obj.Password = uip.Password;
                 obj.Role = uip.Role;
                 obj.Gender = uip.Gender;
                 obj.Address=uip.Address;
@@ -88,6 +94,7 @@ namespace MakeYourTrip.Repository.Services
                     Password = image.Password,
                     Role = image.Role,
                     Gender = image.Gender,
+
                     Address = image.Address,
                     ContactNo = image.ContactNo,
                     IdProof = Convert.ToBase64String(imageBytes),

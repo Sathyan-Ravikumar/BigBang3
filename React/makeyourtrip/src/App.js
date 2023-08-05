@@ -1,38 +1,39 @@
 import './App.css';
-import Login from './Login/login';
+import MiniDrawer from './Navbar/Navbar';
 import React, { useState } from 'react';
 import axios from 'axios';
 
 function App() {
-  const [file, setFile] = useState();
-  const [uploadedFileData, setUploadedFileData] = useState([]);
+  // const [file, setFile] = useState();
+  // const [uploadedFileData, setUploadedFileData] = useState([]);
 
-  const saveFile = (e) => {
-    setFile(e.target.files[0]);
-  };
+  // const saveFile = (e) => {
+  //   setFile(e.target.files[0]);
+  // };
 
-  const getFileData = async () => {
-    try {
-      const res = await axios.get("https://localhost:7115/api/AdminImageUploads/GetAllDetailsFromAdminTable", {
-        responseType: "json",
-      });
-      console.log(res);
-      if (Array.isArray(res.data)) {
-        console.log("Data received:", res.data);
-        setUploadedFileData(res.data); 
-      } else {
-        console.log("Invalid data format received:", res.data);
-      }
-    } catch (ex) {
-      console.log("Error fetching data:", ex);
-    }
-  };
+  // const getFileData = async () => {
+  //   try {
+  //     const res = await axios.get("https://localhost:7115/api/AdminImageUploads/GetAllDetailsFromAdminTable", {
+  //       responseType: "json",
+  //     });
+  //     console.log(res);
+  //     if (Array.isArray(res.data)) {
+  //       console.log("Data received:", res.data);
+  //       setUploadedFileData(res.data); 
+  //     } else {
+  //       console.log("Invalid data format received:", res.data);
+  //     }
+  //   } catch (ex) {
+  //     console.log("Error fetching data:", ex);
+  //   }
+  // };
   
   
 
   return (
     <>
-      <div>
+    <MiniDrawer/>
+      {/* <div>
       <input type="file" onChange={saveFile} />
 
       <button onClick={getFileData}>Get File Data</button>
@@ -71,7 +72,7 @@ function App() {
           </table>
         </div>
       )}
-    </div>
+    </div> */}
     </>
   );
 }
