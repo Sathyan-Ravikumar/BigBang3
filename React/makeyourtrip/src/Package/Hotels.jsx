@@ -11,8 +11,8 @@ import { useLocation, useNavigate } from 'react-router-dom'; // Change to usePar
 
 function Hotel() {
   const location = useLocation();
-  const { packageId, packagePrice } = location.state;
-
+  const { packageId, packagePrice,duration } = location.state;
+  console.log("hotel"+duration);
   const [uploadedFileData, setUploadedFileData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -53,7 +53,8 @@ function Hotel() {
   }
 
   const handleSelectHotel = (hotelId, hotelPrice) => {
-    navigate('/book', { state: { packageId, packagePrice, hotelid: hotelId, hotelprice: hotelPrice } });
+    console.log("Selected Duration:", duration);
+    navigate('/book', { state: {packid:packageId, packagePrice, hotelid: hotelId, hotelprice: hotelPrice,duration } });
   };
 
   return (

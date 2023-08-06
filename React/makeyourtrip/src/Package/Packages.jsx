@@ -80,9 +80,10 @@ function Package() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const handleSelect = (packageId, packagePrice) => {
+  const handleSelect = (packageId, packagePrice,duration) => {
     // Pass the data as state using the location object and navigate to the Hotel component
-    navigate('/hotel', { state: { packageId, packagePrice } });
+    navigate('/hotel', { state: { packageId, packagePrice,duration } });
+    console.log(duration);
   };
 
 
@@ -124,7 +125,7 @@ function Package() {
             </Accordion>
           </CardContent>
           <CardActions>
-          <Button size="small" onClick={() => handleSelect(item.packageId, item.packagePrice)}>Select</Button>          </CardActions>
+          <Button size="small" onClick={() => handleSelect(item.packageId, item.packagePrice,item.duration)}>Select</Button>          </CardActions>
         </Card>
       ))}
   </div>

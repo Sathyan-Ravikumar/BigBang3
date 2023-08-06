@@ -4,6 +4,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import Hotel from './Package/Hotels';
 import Book from './Package/Booking'
+import BillPDF from './Package/TotalDetails'
+import FeedBack from './Package/feedback'
 import { Routes, Route, BrowserRouter as Router } from 'react-router-dom';
 
 function App() {
@@ -15,7 +17,8 @@ function App() {
           <Route exact path="/" element={<MiniDrawer />} />
           <Route path="/hotel" element={<Hotel />} />
           <Route path="/book" element={<Book />} />
-
+          <Route path='/bill' element={<BillPDF/>}/>
+          <Route path='/feedback' element={<FeedBack/>}/>
         </Routes>
       </Router>
     </>
