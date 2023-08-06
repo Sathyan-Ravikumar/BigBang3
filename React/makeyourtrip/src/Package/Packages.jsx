@@ -12,6 +12,7 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Hotel from './Hotels';
+import { useNavigate,useLocation } from 'react-router-dom';
 
 function Package() {
   const [file, setFile] = useState();
@@ -74,6 +75,17 @@ function Package() {
     }
   };
 
+
+
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleSelect = (packageId, packagePrice) => {
+    // Pass the data as state using the location object and navigate to the Hotel component
+    navigate('/hotel', { state: { packageId, packagePrice } });
+  };
+
+
   return (
     <div style={{ display: 'flex', flexWrap: 'wrap' }}>
       {uploadedFileData.map((item) => (
@@ -112,12 +124,10 @@ function Package() {
             </Accordion>
           </CardContent>
           <CardActions>
-            <Button size="small">Select</Button>
-          </CardActions>
+          <Button size="small" onClick={() => handleSelect(item.packageId, item.packagePrice)}>Select</Button>          </CardActions>
         </Card>
       ))}
-  
-    </div>
+  </div>
   );
 }
 
