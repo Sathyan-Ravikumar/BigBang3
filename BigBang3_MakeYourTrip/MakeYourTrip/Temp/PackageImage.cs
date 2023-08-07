@@ -10,7 +10,7 @@ namespace MakeYourTrip.Temp
 
         public string? Place { get; set; }
 
-        public string? Duration { get; set; }
+        public int Duration { get; set; }
 
         public decimal? PackagePrice { get; set; }
 

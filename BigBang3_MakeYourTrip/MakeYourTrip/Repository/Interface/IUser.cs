@@ -10,6 +10,7 @@ namespace MakeYourTrip.Repository.Interface
         Task<User> AddUser([FromForm] UserIdProof uip);
         Task<IEnumerable<User>> GetAllUsers();
         Task<User> GetUserByEmail(string email);
+        Task<User> GetUserName(string name);
         Task<User> GetUserById(int userId);
         Task<IEnumerable<User>> GetPendingUsers();
         Task DeleteUser(User user);

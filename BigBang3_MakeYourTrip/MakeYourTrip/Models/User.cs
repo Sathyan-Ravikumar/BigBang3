@@ -29,9 +29,9 @@ public partial class User
 
     public virtual ICollection<AdminImageUpload> AdminImageUploads { get; set; } = new List<AdminImageUpload>();
 
-    public virtual ICollection<BookingTrip> BookingTrips { get; set; } = new List<BookingTrip>();
-
     public virtual ICollection<Feedback> Feedbacks { get; set; } = new List<Feedback>();
 
     public virtual ICollection<Package> Packages { get; set; } = new List<Package>();
+
+    public virtual ICollection<TripBooking> TripBookings { get; set; } = new List<TripBooking>();
 }

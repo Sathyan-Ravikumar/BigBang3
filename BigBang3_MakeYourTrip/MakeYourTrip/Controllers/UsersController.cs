@@ -66,6 +66,11 @@ namespace MakeYourTrip.Controllers
                 return Problem("User repository is null.");
             }
 
+            var emailcheck = await _userRepository.GetUserByEmail(uip.Email);
+            if (emailcheck != null)
+            {
+                return Problem("Aready have an account in this email");
+            }
             // Encrypt the password before storing it
             uip.Password = Encrypt(uip.Password);
             // Set IsActive status based on the role
@@ -97,8 +102,8 @@ namespace MakeYourTrip.Controllers
             }
 
             var existingUser = await _userRepository.GetUserByEmail(loginModel.Email);
-
-            if (existingUser == null)
+            var checkname = await _userRepository.GetUserName(loginModel.Name);
+            if (existingUser == null|| checkname==null)
             {
                 return Unauthorized("Invalid credentials");
             }
@@ -193,8 +198,7 @@ namespace MakeYourTrip.Controllers
                 new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()),
                 new Claim(ClaimTypes.Name, user.Name),
                 new Claim(ClaimTypes.Email, user.Email),
-                //new Claim(ClaimTypes.StreetAddress, user.Address),
-                //new Claim(ClaimTypes.SerialNumber, user.PhoneNumber),
+                new Claim(ClaimTypes.Role,user.Role),
              }),
                 Expires = DateTime.UtcNow.AddDays(1),
                 SigningCredentials = credentials

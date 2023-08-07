@@ -29,11 +29,10 @@ const Trip = [
   },
 ];
 
-function Booking() {
+function Booking(userid,userrole) {
   const location = useLocation();
   const { packid, packagePrice, hotelid, hotelprice, duration } = location.state;
   console.log(hotelprice, hotelid, packagePrice, packid, duration);
-
   const [inputValues, setInputValues] = useState({
     UserId: '',
     packageId: '',
@@ -65,7 +64,7 @@ function Booking() {
   const navigate = useNavigate(); 
   const handleBooking = async () => {
     const bookingData = {
-      UserId: 2,
+      UserId: userid.UserId,
       packageId:packid,
       hotelId: hotelid,
       name: inputValues.name,
@@ -75,7 +74,7 @@ function Booking() {
       dateOfTheTrip: inputValues.dateOfTheTrip.toISOString(),
       totalAmount: hotelTotalPrice + packageTotalPrice, // Keep it as a number, not a string
     };
-  
+   console.log(bookingData);
     try {
       const response = await axios.post('/TripBookings', bookingData, {
         headers: {

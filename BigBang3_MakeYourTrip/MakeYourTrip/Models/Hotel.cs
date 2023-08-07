@@ -18,4 +18,6 @@ public partial class Hotel
     public string? HotelsImage { get; set; }
 
     public virtual Package? Package { get; set; }
+
+    public virtual ICollection<TripBooking> TripBookings { get; set; } = new List<TripBooking>();
 }

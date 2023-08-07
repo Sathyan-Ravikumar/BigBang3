@@ -22,7 +22,7 @@ import Gallery from '../Admin/ImageGallery'
 import Req from '../Admin/AgentRequest'
 import Adminimg from '../Admin/adminpage'
 import Pack from '../Package/Packages'
-
+import Footer from './Footer';
 import { faComments ,faArrowRightFromBracket,faHouse,faCircleInfo,faLocationDot} from '@fortawesome/free-solid-svg-icons';
 const drawerWidth = 240;
 
@@ -103,7 +103,10 @@ export default function MiniDrawer() {
     setOpen(false);
   };
   const listIcons = [<FontAwesomeIcon icon={faHouse} beat />,<FontAwesomeIcon icon={faCircleInfo} beat />,<FontAwesomeIcon icon={faComments} beat />, <FontAwesomeIcon icon={faLocationDot} beat />,<FontAwesomeIcon icon={faArrowRightFromBracket} beat />]; // Import the required icons and store them in an array
-
+  const handleLogout = () => {
+    sessionStorage.removeItem('decodedToken');
+  };
+  
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
@@ -150,6 +153,7 @@ export default function MiniDrawer() {
                     mr: open ? 3 : 'auto',
                     justifyContent: 'center',
                   }}
+                  onClick={handleLogout}
                 >
                   {listIcons[index]}
                 </ListItemIcon>
@@ -159,40 +163,13 @@ export default function MiniDrawer() {
             </ListItem>
           ))}
         </List>
-        {/* <Divider />
-        <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: 'block' }}>
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? 'initial' : 'center',
-                  px: 2.5,
-                }}
-              >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : 'auto',
-                    justifyContent: 'center',
-                  }}
-                >
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List> */}
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
 
         <div> 
-        {/* <Login /> */}
-        {/* <Gallery/> */}
-        {/* <Req/> */}
-        {/* <Adminimg/> */}
+       
         <Pack/>
+        <Footer/>
         </div>
 
 

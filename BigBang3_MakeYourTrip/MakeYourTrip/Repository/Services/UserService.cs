@@ -25,12 +25,12 @@ namespace MakeYourTrip.Repository.Services
         {
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
-
             return user;
         }
         public async Task<User> AddUser([FromForm] UserIdProof uip)
             {
-                string ImagePath = await SaveIdProof(uip.IdProofImg);
+            
+            string ImagePath = await SaveIdProof(uip.IdProofImg);
                 var obj = new User();
                 obj.Name = uip.Name;
                 obj.Email = uip.Email;
@@ -74,8 +74,11 @@ namespace MakeYourTrip.Repository.Services
             {
                 return await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
             }
-
-            public async Task<IEnumerable<User>> GetPendingUsers()
+            public async Task<User> GetUserName(string name)
+            {
+                return await _context.Users.FirstOrDefaultAsync(u => u.Name == name);
+            }
+        public async Task<IEnumerable<User>> GetPendingUsers()
             {
             
                 var pendingUsers = await _context.Users.Where(u => u.StatusForAgents == "InActive").ToListAsync();

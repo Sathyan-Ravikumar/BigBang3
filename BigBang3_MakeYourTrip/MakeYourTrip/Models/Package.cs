@@ -11,7 +11,7 @@ public partial class Package
 
     public string? Place { get; set; }
 
-    public string? Duration { get; set; }
+    public int Duration { get; set; }
 
     public decimal? PackagePrice { get; set; }
 
@@ -19,11 +19,11 @@ public partial class Package
 
     public string? PlaceImage { get; set; }
 
-    public virtual ICollection<BookingTrip> BookingTrips { get; set; } = new List<BookingTrip>();
-
     public virtual ICollection<Hotel> Hotels { get; set; } = new List<Hotel>();
 
     public virtual ICollection<ItineraryDetail> ItineraryDetails { get; set; } = new List<ItineraryDetail>();
+
+    public virtual ICollection<TripBooking> TripBookings { get; set; } = new List<TripBooking>();
 
     public virtual User? User { get; set; }
 }

@@ -6,7 +6,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 // ... (other imports and code)
 
-function AdminImage() {
+function AdminImage(userid,userrole) {
     const [file, setFile] = useState();
     const [fileName, setFileName] = useState();
     const [inputValues, setInputValues] = useState({
@@ -51,7 +51,7 @@ function AdminImage() {
       }
   
       const formData = new FormData();
-      formData.append('UserId', inputValues.UserId);
+      formData.append('UserId', userid.UserId);
       formData.append('ImageDetail', inputValues.ImageDetail);
       formData.append('formFile', file);
       try {

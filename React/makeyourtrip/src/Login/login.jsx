@@ -1,10 +1,10 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import TextField from '@mui/material/TextField';
 import './login.css';
 import img from '../Assets/bag.jpg';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import axios from 'axios';
+import axios from '../axios';
 import InputLabel from '@mui/material/InputLabel';
 import InputAdornment from '@mui/material/InputAdornment';
 import FormHelperText from '@mui/material/FormHelperText';
@@ -13,16 +13,17 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import IconButton from '@mui/material/IconButton';
 import Input from '@mui/material/Input';
+import emailValidator from 'email-validator'; // Import a robust email validation library
+import { Link } from 'react-router-dom';
+import jwt_decode from 'jwt-decode';
 
-const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-// Your backend API endpoint
-const API_URL = 'https://localhost:7115/api/Users/login';
-
-export default function Register() {
-  const [showPassword, setShowPassword] = React.useState(false);
-  const [emailError, setEmailError] = React.useState(false);
-  const [passwordError, setPasswordError] = React.useState(false);
+export default function Login() {  
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [emailError, setEmailError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
@@ -30,27 +31,34 @@ export default function Register() {
     event.preventDefault();
   };
 
-  const handleSignIn = () => {
+  const handleRegistration = () => {
     if (!validateFields()) {
       return;
     }
 
-    // Get the input values
-    const email = emailRef.current.value;
-    const password = passwordRef.current.value;
-
     // Prepare the data to be sent in the POST request
     const data = {
+      name: name,
       email: email,
       password: password,
     };
 
     // Make the POST request using axios
     axios
-      .post(API_URL, data)
+      .post('/Users/login', data)
       .then((response) => {
         // Handle the response from the server (if needed)
         console.log('Registration successful!', response.data);
+        const encodedToken = response.data;
+        const decodedToken = jwt_decode(encodedToken);
+      
+        // Store the decoded token in local storage
+        sessionStorage.setItem('decodedToken', JSON.stringify(decodedToken));
+      
+        // Extract user role from the decoded token
+        const userRole = decodedToken.role;
+        const userid =parseInt(decodedToken.nameid, 10);
+        console.log(userRole,userid)
         // Do something with the response, like showing a success message or redirecting
       })
       .catch((error) => {
@@ -62,14 +70,14 @@ export default function Register() {
   const validateFields = () => {
     let valid = true;
 
-    if (!emailRegex.test(emailRef.current.value)) {
+    if (!emailValidator.validate(email)) { // Use the email-validator library for better email validation
       setEmailError(true);
       valid = false;
     } else {
       setEmailError(false);
     }
 
-    if (passwordRef.current.value.trim() === '') {
+    if (password.trim() === '') {
       setPasswordError(true);
       valid = false;
     } else {
@@ -78,9 +86,6 @@ export default function Register() {
 
     return valid;
   };
-
-  const emailRef = useRef(null);
-  const passwordRef = useRef(null);
 
   return (
     <section className='App'>
@@ -91,7 +96,17 @@ export default function Register() {
           <div>
             <FormControl sx={{ m: 1, width: '25ch' }} variant="standard">
               <TextField
-                inputRef={emailRef}
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                id="standard-basic"
+                label="Name"
+                variant="standard"
+              />
+            </FormControl>
+            <FormControl sx={{ m: 1, width: '25ch' }} variant="standard">
+              <TextField
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 id="standard-basic"
                 label="Email"
                 variant="standard"
@@ -102,7 +117,8 @@ export default function Register() {
             <FormControl sx={{ m: 1, width: '25ch' }} variant="standard">
               <InputLabel htmlFor="standard-adornment-password">Password</InputLabel>
               <Input
-                inputRef={passwordRef}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 id="standard-adornment-password"
                 type={showPassword ? 'text' : 'password'}
                 endAdornment={
@@ -122,11 +138,13 @@ export default function Register() {
             </FormControl>
             <div>
               <div>
-                <Button onClick={handleSignIn}>Sign In</Button>
+                <Button onClick={handleRegistration}>Sign In</Button>
               </div>
               <div>
+              <Link to="/register" style={{textDecoration:'none'}}>
                 <p>Don't have an account? Register here</p>
-              </div>
+              </Link>             
+               </div>
             </div>
           </div>
         </div>

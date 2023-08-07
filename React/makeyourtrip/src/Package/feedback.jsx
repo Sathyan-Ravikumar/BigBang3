@@ -5,7 +5,7 @@ import TextField from '@mui/material/TextField';
 import React, { useState, useEffect } from 'react';
 import axios from '../axios';
 
-function Feedback() {
+function Feedback(userid,userrole) {
   const [inputValues, setInputValues] = useState({
     UserId: '',
     feedbackMessage: '',
@@ -14,7 +14,7 @@ function Feedback() {
 
   const handleFeed = async () => {
     const bookingData = {
-      UserId: 2,
+      UserId: userid.UserId,
       feedbackMessage: inputValues.feedbackMessage,
       rating: inputValues.rating,
     };

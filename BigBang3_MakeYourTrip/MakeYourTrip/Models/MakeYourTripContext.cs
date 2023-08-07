@@ -17,8 +17,6 @@ public partial class MakeYourTripContext : DbContext
 
     public virtual DbSet<AdminImageUpload> AdminImageUploads { get; set; }
 
-    public virtual DbSet<BookingTrip> BookingTrips { get; set; }
-
     public virtual DbSet<Feedback> Feedbacks { get; set; }
 
     public virtual DbSet<Hotel> Hotels { get; set; }
@@ -26,6 +24,8 @@ public partial class MakeYourTripContext : DbContext
     public virtual DbSet<ItineraryDetail> ItineraryDetails { get; set; }
 
     public virtual DbSet<Package> Packages { get; set; }
+
+    public virtual DbSet<TripBooking> TripBookings { get; set; }
 
     public virtual DbSet<User> Users { get; set; }
 
@@ -44,27 +44,6 @@ public partial class MakeYourTripContext : DbContext
             entity.HasOne(d => d.User).WithMany(p => p.AdminImageUploads)
                 .HasForeignKey(d => d.UserId)
                 .HasConstraintName("FK__AdminImag__UserI__4E88ABD4");
-        });
-
-        modelBuilder.Entity<BookingTrip>(entity =>
-        {
-            entity.HasKey(e => e.BookingTripId).HasName("PK__BookingT__5AF3DBC9BD01CF89");
-
-            entity.ToTable("BookingTrip");
-
-            entity.Property(e => e.DateOfBooking)
-                .HasDefaultValueSql("(getdate())")
-                .HasColumnType("datetime");
-            entity.Property(e => e.DateOfTheTrip).HasColumnType("date");
-            entity.Property(e => e.TotalAmount).HasColumnType("money");
-
-            entity.HasOne(d => d.Package).WithMany(p => p.BookingTrips)
-                .HasForeignKey(d => d.PackageId)
-                .HasConstraintName("FK__BookingTr__Packa__59FA5E80");
-
-            entity.HasOne(d => d.User).WithMany(p => p.BookingTrips)
-                .HasForeignKey(d => d.UserId)
-                .HasConstraintName("FK__BookingTr__UserI__59063A47");
         });
 
         modelBuilder.Entity<Feedback>(entity =>
@@ -112,13 +91,37 @@ public partial class MakeYourTripContext : DbContext
 
             entity.ToTable("Package");
 
-            entity.Property(e => e.Duration).HasMaxLength(50);
             entity.Property(e => e.PackagePrice).HasColumnType("money");
             entity.Property(e => e.Place).HasMaxLength(50);
 
             entity.HasOne(d => d.User).WithMany(p => p.Packages)
                 .HasForeignKey(d => d.UserId)
                 .HasConstraintName("FK__Package__UserId__5629CD9C");
+        });
+
+        modelBuilder.Entity<TripBooking>(entity =>
+        {
+            entity.HasKey(e => e.BookingTripId).HasName("PK__TripBook__5AF3DBC9800F23EB");
+
+            entity.ToTable("TripBooking");
+
+            entity.Property(e => e.DateOfBooking)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+            entity.Property(e => e.DateOfTheTrip).HasColumnType("date");
+            entity.Property(e => e.TotalAmount).HasColumnType("money");
+
+            entity.HasOne(d => d.Hotel).WithMany(p => p.TripBookings)
+                .HasForeignKey(d => d.HotelId)
+                .HasConstraintName("FK__TripBooki__Hotel__71D1E811");
+
+            entity.HasOne(d => d.Package).WithMany(p => p.TripBookings)
+                .HasForeignKey(d => d.PackageId)
+                .HasConstraintName("FK__TripBooki__Packa__70DDC3D8");
+
+            entity.HasOne(d => d.User).WithMany(p => p.TripBookings)
+                .HasForeignKey(d => d.UserId)
+                .HasConstraintName("FK__TripBooki__UserI__6FE99F9F");
         });
 
         modelBuilder.Entity<User>(entity =>
