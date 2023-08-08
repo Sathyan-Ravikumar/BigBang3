@@ -16,6 +16,8 @@ import Request from './Admin/AgentRequest';
 import Gallery from './Admin/ImageGallery';
 import Package from './Package/Packages';
 import PackageAdd from './AgentPages/Packageadd';
+import ItineraryAdd from './AgentPages/ItineraryAdd';
+import HotelAdd from './AgentPages/Hoteladd';
 
 function App() {
   const decodedToken = JSON.parse(sessionStorage.getItem('decodedToken'));
@@ -26,8 +28,8 @@ function App() {
     <>
       <Router>
         <Routes>
-        <Route  path="/admin" element={<Admin userId={userId} userRole={userRole} />} />
-        <Route  path="/register" element={<Register />} />
+          <Route  path="/admin" element={<Admin userId={userId} userRole={userRole} />} />
+          <Route  path="/register" element={<Register />} />
           <Route  path="/login" element={<Login />} />
           <Route  path="/" element={<MiniDrawer />} />
           <Route  path="/pack" element={<Package  />} />
@@ -39,7 +41,10 @@ function App() {
           <Route path='/feedback' element={<FeedBack userId={userId} userRole={userRole}  />}/>
           <Route  path="/footer" element={<Footer />} />
           <Route path="/packageadd" element={<PackageAdd/>} />
-                  </Routes>
+          <Route path="/itinerary" element={<ItineraryAdd/>} />
+          <Route path="/hoteladd" element={<HotelAdd/>} />
+<Route path='/agentrequest' element={<Request/>}/>
+          </Routes>
       </Router>
     </>
   );

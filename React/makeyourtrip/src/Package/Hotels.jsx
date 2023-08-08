@@ -10,7 +10,7 @@ import Rating from '@mui/material/Rating';
 import { useLocation, useNavigate } from 'react-router-dom';
 import TextField from '@mui/material/TextField';
 import SearchIcon from '@mui/icons-material/Search';
-
+import myVideo from '../../src/Assets/hotel1.jpg'
 
 
 function Hotel() {
@@ -49,13 +49,7 @@ function Hotel() {
     gethotel();
   }, [packageId]);
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
+  
 
   // Step 2: Create a function to handle search input change
   const handleSearchInputChange = (event) => {
@@ -81,7 +75,18 @@ function Hotel() {
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column' }}>
+    <>
+    <div className="parallax-container">
+        <div className="parallax-image">
+          <img src={myVideo} alt="Background" />
+        </div>
+        <div className="parallax-content">
+          <div className="content">
+            <h1>Hotels</h1>
+          </div>
+        </div>
+      </div>
+    <div style={{ display: 'flex', flexDirection: 'column',marginTop:'5%' }}>
      
       {/* Step 4: Add the search bar */}
       <TextField
@@ -129,6 +134,7 @@ function Hotel() {
         ))}
       </div>
     </div>
+    </>
   );
 }
 

@@ -4,7 +4,7 @@ import TextField from '@mui/material/TextField';
 import img from '../Assets/bag.jpg';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-// ... (other imports and code)
+
 
 function AdminImage(userid,userrole) {
     const [file, setFile] = useState();

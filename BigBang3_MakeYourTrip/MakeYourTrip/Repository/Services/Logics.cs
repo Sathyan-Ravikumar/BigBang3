@@ -73,5 +73,28 @@ namespace MakeYourTrip.Repository.Services
             return Itineraries;
         }
 
+        public async Task<Package> GetPackagebyUserId(int userid)
+        {
+            var images = await _dbcontext.Packages.ToListAsync();
+            Package byid =  images.FirstOrDefault(p => p.UserId == userid);
+
+            var uploadsFolder = Path.Combine(_hostEnvironment.WebRootPath, "Package");
+            var filePath = Path.Combine(uploadsFolder, byid.PlaceImage);
+
+            var imageBytes = await System.IO.File.ReadAllBytesAsync(filePath);
+            var tourData = new Package
+            {
+                PackageId = byid.PackageId,
+                UserId = byid.UserId,
+                Place = byid.Place,
+                Duration = byid.Duration,
+                PackagePrice = byid.PackagePrice,
+                Description = byid.Description,
+                PlaceImage = Convert.ToBase64String(imageBytes)
+            };
+            return tourData;
+        }
+
+
     }
 }

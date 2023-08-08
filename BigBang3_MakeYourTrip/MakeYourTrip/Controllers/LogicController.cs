@@ -41,5 +41,17 @@ namespace MakeYourTrip.Controllers
                 return NotFound(ex.Message);
             }
         }
+        [HttpGet("PackageByUserId")]
+        public async Task<ActionResult<Package>> GetPackagebyUserId(int userid)
+        {
+            try
+            {
+                return Ok(await _context.GetPackagebyUserId(userid));
+            }
+            catch (ArithmeticException ex)
+            {
+                return NotFound(ex.Message);
+            }
+        }
     }
 }

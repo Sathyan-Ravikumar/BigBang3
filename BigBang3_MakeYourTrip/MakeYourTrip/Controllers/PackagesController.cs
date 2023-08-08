@@ -57,9 +57,16 @@ namespace MakeYourTrip.Controllers
         // POST: api/Packages
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<List<Package>>> PostPackage([FromForm] PackageImage pi)
+        public async Task<ActionResult<Package>> PostPackage([FromForm] PackageImage pi)
         {
-            return await _context.PostPackage(pi);
+            try
+            {
+                return await _context.PostPackage(pi);
+            }
+            catch (ArithmeticException ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         // DELETE: api/Packages/5

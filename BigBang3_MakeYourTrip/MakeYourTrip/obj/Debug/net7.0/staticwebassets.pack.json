@@ -77,6 +77,10 @@
       "PackagePath": "staticwebassets\\IdProof\\prawns231919184.jpg"
     },
     {
+      "Id": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\Itinerary\\bg-hero231421790.jpg",
+      "PackagePath": "staticwebassets\\Itinerary\\bg-hero231421790.jpg"
+    },
+    {
       "Id": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\Itinerary\\bg-hero235450141.jpg",
       "PackagePath": "staticwebassets\\Itinerary\\bg-hero235450141.jpg"
     },
@@ -93,12 +97,28 @@
       "PackagePath": "staticwebassets\\Itinerary\\pexels-san235418525.jpg"
     },
     {
+      "Id": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\Package\\23254597_c231126578.jpg",
+      "PackagePath": "staticwebassets\\Package\\23254597_c231126578.jpg"
+    },
+    {
       "Id": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\Package\\background233840768.jpg",
       "PackagePath": "staticwebassets\\Package\\background233840768.jpg"
     },
     {
       "Id": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\Package\\background234926486.jpg",
       "PackagePath": "staticwebassets\\Package\\background234926486.jpg"
+    },
+    {
+      "Id": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\Package\\bg-hero231105950.jpg",
+      "PackagePath": "staticwebassets\\Package\\bg-hero231105950.jpg"
+    },
+    {
+      "Id": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\Package\\bg-hero234607729.jpg",
+      "PackagePath": "staticwebassets\\Package\\bg-hero234607729.jpg"
+    },
+    {
+      "Id": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\Package\\bg2-cut232227427.jpg",
+      "PackagePath": "staticwebassets\\Package\\bg2-cut232227427.jpg"
     },
     {
       "Id": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\Package\\chicken-ma233752393.png",
@@ -131,6 +151,10 @@
     {
       "Id": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\hotels\\bg-hero234001363.jpg",
       "PackagePath": "staticwebassets\\hotels\\bg-hero234001363.jpg"
+    },
+    {
+      "Id": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\hotels\\bg2234502262.jpg",
+      "PackagePath": "staticwebassets\\hotels\\bg2234502262.jpg"
     },
     {
       "Id": "D:\\CloanBigBang3\\BigBang3\\BigBang3_MakeYourTrip\\MakeYourTrip\\wwwroot\\hotels\\coliflower235056862.jpg",

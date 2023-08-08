@@ -4,7 +4,7 @@ import TextField from '@mui/material/TextField';
 import img from '../Assets/bag.jpg';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-// ... (other imports and code)
+import { useLocation, useNavigate } from 'react-router-dom';
 
 function AddPackages(userid, userrole) {
   const [file, setFile] = useState();
@@ -19,6 +19,9 @@ function AddPackages(userid, userrole) {
   });
   const [imageDetailError, setImageDetailError] = useState('');
   const [fileError, setFileError] = useState('');
+
+  const navigate = useNavigate();
+
 
   const saveFile = (e) => {
     const selectedFile = e.target.files[0];
@@ -40,26 +43,41 @@ function AddPackages(userid, userrole) {
     }));
   };
 
-  const uploadFile = async () => {
+  const [submitError, setSubmitError] = useState('');
+
+  const handleUploadFile = async () => {
     if (!file) {
       setFileError('Please select a file.');
       return;
     }
 
     const formData = new FormData();
-    formData.append('UserId', userid.UserId);
-    formData.append('Place', inputValues.Place); // Updated to use inputValues
-    formData.append('Duration', inputValues.Duration); // Updated to use inputValues
-    formData.append('PackagePrice', inputValues.PackagePrice); // Updated to use inputValues
-    formData.append('Description', inputValues.Description); // Updated to use inputValues
+    formData.append('UserId', 2);
+    formData.append('Place', inputValues.Place);
+    formData.append('Duration', inputValues.Duration);
+    formData.append('PackagePrice', inputValues.PackagePrice);
+    formData.append('Description', inputValues.Description);
     formData.append('PackImg', file);
-console.log(formData);
+    const config = {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      };
     try {
-      const res = await axios.post('/Packages', formData);
-      console.log(res);
-      
+      const response = await axios.post('/Packages', formData,config);
+
+      if (response.status === 200) {
+        console.log('Successfully added package:', response.data);
+        const Newpackid = response.data.packageId;
+        const daynum= response.data.duration;
+        navigate('/itinerary', { state: {Newpackid,daynum } });
+      } else {
+        console.log('Received response:', response);
+        setSubmitError('Failed to add the package. Please try again later.');
+      }
     } catch (ex) {
-      console.log(ex);
+      console.log('Error during API call:', ex);
+      setSubmitError('An error occurred ');
     }
   };
 
@@ -113,7 +131,7 @@ console.log(formData);
           InputLabelProps={{
             shrink: true,
           }}
-          label="Image"
+          label="Package Image"
           variant="standard"
           onChange={saveFile}
           required
@@ -121,7 +139,8 @@ console.log(formData);
           helperText={fileError}
         />
 
-        <Button onClick={uploadFile}>Submit</Button>
+        <Button onClick={handleUploadFile}>Submit</Button>
+        {submitError && <p style={{ color: 'red' }}>{submitError}</p>}
       </Box>
     </>
   );

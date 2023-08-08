@@ -15,6 +15,9 @@ import Hotel from './Hotels';
 import { useNavigate, useLocation } from 'react-router-dom';
 import TextField from '@mui/material/TextField';
 import SearchIcon from '@mui/icons-material/Search';
+import bgimg from '../Assets/woman-with-hat.jpg'
+import './packages.css'
+
 
 function Package(userid,userrole) {
  
@@ -26,7 +29,7 @@ function Package(userid,userrole) {
   const [additionalData, setAdditionalData] = useState([]);
   const [searchQuery, setSearchQuery] = useState(''); // State to store the search query
   console.log("Package : "+ userid,userrole);
-  
+
   const getpack = async () => {
     try {
       const res = await axios.get('/Packages', {
@@ -100,7 +103,22 @@ function Package(userid,userrole) {
 
   return (
     <>
-      <div style={{ display: 'flex', flexWrap: 'wrap',marginTop:'100px' }}>
+    <div className="parallax-container">
+        <div className="parallax-image">
+          <img src={bgimg} alt="Background" />
+        </div>
+        <div className="parallax-content">
+          <div className="content">
+            <h1>Vacation Time...</h1>
+          </div>
+        </div>
+      </div>
+
+      <div style={{ display: 'flex', flexWrap: 'wrap', marginTop: '100px' }}>
+
+        
+        <h2 >PACKAGES</h2>
+        
         {/* Search Bar */}
         <TextField
           type="text"

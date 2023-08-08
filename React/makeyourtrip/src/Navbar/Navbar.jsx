@@ -23,6 +23,7 @@ import Req from '../Admin/AgentRequest'
 import Adminimg from '../Admin/adminpage'
 import Pack from '../Package/Packages'
 import Footer from './Footer';
+import { Link } from 'react-router-dom';
 import { faComments ,faArrowRightFromBracket,faHouse,faCircleInfo,faLocationDot} from '@fortawesome/free-solid-svg-icons';
 const drawerWidth = 240;
 
@@ -137,14 +138,21 @@ export default function MiniDrawer() {
         </DrawerHeader>
         <Divider />
         <List>
-          {['Home', 'About us', 'Feedback', 'Package','Logout'].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: 'block' }}>
+          {[{ text: 'Home', icon: faHouse, route: '/' },
+            { text: 'Image Gallery', icon: faCircleInfo, route: '/gallery' },
+            { text: 'Feedback', icon: faComments, route: '/feedback' },
+            { text: 'Agent Request', icon: faLocationDot, route: '/request' },
+            { text: 'Add Image', icon: faArrowRightFromBracket, route: '/admin' },
+            { text: 'Agent', icon: faArrowRightFromBracket, route: '/agent' },].map((item, index) => (
+              <ListItem key={item.text} disablePadding sx={{ display: 'block' }}>
               <ListItemButton
-                 sx={{
+                component={Link}
+                to={item.route}
+                sx={{
                   minHeight: 48,
                   justifyContent: open ? 'initial' : 'center',
                   px: 2.5,
-                  mt: index === 4 ? 40 : 0, // Add top margin for the "Logout" item (index === 4)
+                  mt: index === 6 ? 40 : 0,
                 }}
               >
                 <ListItemIcon
@@ -157,8 +165,7 @@ export default function MiniDrawer() {
                 >
                   {listIcons[index]}
                 </ListItemIcon>
-                
-                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+                <ListItemText primary={item.text} sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>
             </ListItem>
           ))}

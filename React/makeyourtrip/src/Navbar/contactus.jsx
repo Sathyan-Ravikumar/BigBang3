@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import styled from 'styled-components';
-import { Button } from '@mui/material';
+import { Button, Box } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import emailjs from 'emailjs-com'; // Use emailjs-com instead of emailjs/browser
 
@@ -24,23 +24,34 @@ export default function Footer() {
 
   return (
     <>
-      <div className='Feedback_Form'>
-        <h1>Give Your Valuable Feedback :</h1>
-        <br></br>
-        <br></br>
+      <div>
         <form ref={form} onSubmit={sendEmail}>
-          <TextField label='Name' name='user_name' />
-          <TextField label='Email' name='user_email' type='email' />
-          <TextField
-            label='Phone'
-            name='phone'
-            required
-            type='tel'
-            pattern='[0-9]{10}'
-            title='Please enter a 10-digit phone number'
-          />
-          <TextField label='Message' name='message' multiline rows={4} />
-          <Button type='submit'>Send</Button>
+          <Box
+            component="form"
+            sx={{
+              display: 'grid',
+              gap: '10px', // Adjust the gap as needed
+              gridTemplateColumns: '1fr', // Change to '1fr 1fr' for two columns, etc.
+              '& > :not(style)': { width: '100%' },
+            }}
+            autoComplete="off"
+            id="form"
+            className="flex flex-col"
+          >
+            <TextField label='Name' name='user_name' variant='standard' />
+            <TextField label='Email' name='user_email' type='email' variant='standard' />
+            <TextField
+              label='Phone'
+              name='phone'
+              required
+              type='tel'
+              pattern='[0-9]{10}'
+              variant='standard'
+              title='Please enter a 10-digit phone number'
+            />
+            <TextField label='Message' name='message' multiline rows={3} variant='standard' />
+            <Button type='submit'>Send</Button>
+          </Box>
         </form>
       </div>
     </>

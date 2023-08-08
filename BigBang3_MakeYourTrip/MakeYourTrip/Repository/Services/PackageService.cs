@@ -76,19 +76,23 @@ namespace MakeYourTrip.Repository.Services
             return await _dbcontext.Packages.ToListAsync();
 
         }
-        public async Task<List<Package>> PostPackage([FromForm] PackageImage pi)
+        public async Task<Package> PostPackage([FromForm] PackageImage pi)
         {
-            string ImagePath = await SavepackageImage(pi.PackImg);
-            var pack = new Package();
-            pack.UserId = pi.UserId;
-            pack.Place = pi.Place;
-            pack.Duration = pi.Duration;
-            pack.PackagePrice = pi.PackagePrice;
-            pack.Description = pi.Description;
-            pack.PlaceImage = ImagePath;
-            var obj = await _dbcontext.Packages.AddAsync(pack);
-            await _dbcontext.SaveChangesAsync();
-            return await _dbcontext.Packages.ToListAsync();
+            
+           
+                string ImagePath = await SavepackageImage(pi.PackImg);
+                var pack = new Package();
+                pack.UserId = pi.UserId;
+                pack.Place = pi.Place;
+                pack.Duration = pi.Duration;
+                pack.PackagePrice = pi.PackagePrice;
+                pack.Description = pi.Description;
+                pack.PlaceImage = ImagePath;
+                var obj = await _dbcontext.Packages.AddAsync(pack);
+                await _dbcontext.SaveChangesAsync();
+                return pack; // Return the newly added package with a 200 status code
+            
+            
         }
 
 

@@ -32,7 +32,7 @@ const Trip = [
 function Booking(userid,userrole) {
   const location = useLocation();
   const { packid, packagePrice, hotelid, hotelprice, duration } = location.state;
-  console.log(hotelprice, hotelid, packagePrice, packid, duration);
+  //console.log(hotelprice, hotelid, packagePrice, packid, duration);
   const [inputValues, setInputValues] = useState({
     UserId: '',
     packageId: '',
@@ -86,7 +86,6 @@ function Booking(userid,userrole) {
         const bookid = response.data.bookingTripId;
         const total= response.data.totalAmount;
         navigate('/bill', { state: {packid, packagePrice, hotelid, hotelprice, duration ,bookid,total } });
-
       } else {
         console.log('Booking failed:', response.statusText);
       }
