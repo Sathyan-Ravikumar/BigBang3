@@ -1,4 +1,5 @@
-﻿using MakeYourTrip.Models;
+﻿
+using MakeYourTrip.Models;
 using MakeYourTrip.Repository.Interface;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;

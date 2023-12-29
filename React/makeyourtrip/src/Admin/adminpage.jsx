@@ -10,7 +10,6 @@ function AdminImage(userid,userrole) {
     const [file, setFile] = useState();
     const [fileName, setFileName] = useState();
     const [inputValues, setInputValues] = useState({
-      UserId: '',
       ImageDetail: '',
     });
     const [imageDetailError, setImageDetailError] = useState('');
@@ -49,16 +48,21 @@ function AdminImage(userid,userrole) {
         setFileError('Please select a file.');
         return;
       }
-  
+     console.log(userid)
       const formData = new FormData();
-      formData.append('UserId', userid.UserId);
+      formData.append('UserId', userid.userId);
       formData.append('ImageDetail', inputValues.ImageDetail);
       formData.append('formFile', file);
       try {
-        const res = await axios.post('/AdminImageUploads/AllAdminColumn', formData);
+        const res = await axios.post('/AdminImageUploads/AllAdminColumn', formData, {
+          headers: {
+            "accept": "text/plain",
+            "Authorization": "Bearer " + sessionStorage.getItem('decodedToken')
+          }
+        }
+);
         console.log(res);
         window.location.reload();
-
       } catch (ex) {
         console.log(ex);
       }
@@ -66,6 +70,9 @@ function AdminImage(userid,userrole) {
   
     return (
       <>
+      <div>
+        <h2>Add Image For Image Gallery</h2>
+      </div>
         <Box
           component="form"
           sx={{
@@ -76,14 +83,14 @@ function AdminImage(userid,userrole) {
           id="form"
           className="flex flex-col"
         >
-           <TextField
+           {/* <TextField
               id="UserId"
               name="UserId"
               label="User id"
               variant="standard"
               value={inputValues.UserId}
               onChange={handleInputChange}
-            />
+            /> */}
           <TextField
             id="ImageDetail"
             name="ImageDetail"

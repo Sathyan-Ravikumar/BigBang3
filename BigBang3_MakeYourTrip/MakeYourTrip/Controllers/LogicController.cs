@@ -42,11 +42,11 @@ namespace MakeYourTrip.Controllers
             }
         }
         [HttpGet("PackageByUserId")]
-        public async Task<ActionResult<Package>> GetPackagebyUserId(int userid)
+        public async Task<ActionResult<List<Package>>> GetPackagebyUserId(int userid)
         {
             try
             {
-                return Ok(await _context.GetPackagebyUserId(userid));
+                return Ok(await _context.GetPackagesByUserId(userid));
             }
             catch (ArithmeticException ex)
             {

@@ -16,27 +16,29 @@ import TextField from '@mui/material/TextField';
 import SearchIcon from '@mui/icons-material/Search';
 import Hoteladd from './Hoteladd';
 import Packageadd from './Packageadd';
+
+
 function PackageUser(userid,userrole) {
- 
-  const [file, setFile] = useState();
+   const [file, setFile] = useState();
   const [uploadedFileData, setUploadedFileData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [expanded, setExpanded] = useState(false);
   const [additionalData, setAdditionalData] = useState([]);
   const [searchQuery, setSearchQuery] = useState(''); // State to store the search query
-  console.log("Package : "+ userid,userrole);
-  
   const getpack = async () => {
     try {
-      const res = await axios.get('/Logic/PackageByUserId?userid=2', {
+      const res = await axios.get('/Logic/PackageByUserId?userid=' + userid.userId, {
         responseType: 'json',
       });
-      console.log(res);
-      if (Array.isArray(res.data.packages)) { // Check if the packages array exists in the response
-        console.log('Data received:', res.data.packages);
-        setUploadedFileData(res.data.packages); // Set the packages array in the state
+  
+      console.log('API Response:', res.data);
+  
+      if (Array.isArray(res.data)) {
+        console.log('Data received:', res.data);
+        setUploadedFileData(res.data);
         setLoading(false);
+        setError(null); 
       } else {
         console.log('Invalid data format received:', res.data);
         setLoading(false);
@@ -55,7 +57,9 @@ function PackageUser(userid,userrole) {
       const res = await axios.get(`/Logic/ItineraryByPackId?packid=${packageId}`, {
         responseType: 'json',
       });
-      console.log(res);
+      
+      console.log('Itinerary API Response:', res.data); // Log the response data
+      
       if (Array.isArray(res.data)) {
         console.log('Additional data received:', res.data);
         setAdditionalData(res.data);
@@ -68,7 +72,7 @@ function PackageUser(userid,userrole) {
       setAdditionalData([]);
     }
   };
-
+  
   useEffect(() => {
     getpack();
   }, []);
@@ -85,7 +89,7 @@ function PackageUser(userid,userrole) {
   const location = useLocation();
 
   const handleSelect = (packageId, packagePrice, duration) => {
-    navigate('/hotel', { state: { packageId, packagePrice, duration } });
+    navigate('/yourpackagehotel', { state: { packageId, packagePrice, duration } });
     console.log(duration);
   };
 
@@ -101,8 +105,8 @@ function PackageUser(userid,userrole) {
 
   return (
     <>
-      <div style={{ display: 'flex', flexWrap: 'wrap',marginTop:'100px' }}>
-        {/* Search Bar */}
+      <div style={{ display: 'flex', flexWrap: 'wrap',marginTop:'100px',marginLeft:'10%' }}>
+        <h2 style={{ marginBottom: '20px', textAlign: 'center', width: '100%' }}>Your Packages</h2>
         <TextField
           type="text"
           value={searchQuery}
@@ -133,13 +137,13 @@ function PackageUser(userid,userrole) {
                 {item.place}
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                {item.duration}
+               Number of Days : {item.duration}
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                {item.packagePrice}
+               Price : {item.packagePrice}
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                {item.description}
+               Description : {item.description}
               </Typography>
 
               <Accordion expanded={expanded === `panel${item.packageId}`} onChange={handleChange(`panel${item.packageId}`)}>
@@ -176,7 +180,7 @@ function PackageUser(userid,userrole) {
       <div>
       <h1 style={{textAlign:'center',marginTop:'5%'}}>Add New Package</h1>
       <div>
-        <Packageadd/>
+        <Packageadd />
       </div>
       </div>
     </>

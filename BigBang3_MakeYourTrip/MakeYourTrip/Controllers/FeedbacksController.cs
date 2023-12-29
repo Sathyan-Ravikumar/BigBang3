@@ -25,8 +25,15 @@ namespace MakeYourTrip.Controllers
         [HttpGet]
         public async Task<ActionResult<List<Feedback>>> GetFeedbacks()
         {
-          
-            return await _context.GetFeedbacks();
+            try
+            {
+                return await _context.GetFeedbacks();
+
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         
@@ -35,7 +42,18 @@ namespace MakeYourTrip.Controllers
         [HttpPost]
         public async Task<ActionResult<List<Feedback>>> PostFeedback(Feedback feedback)
         {
-            return await _context.PostFeedback(feedback);
+            try
+            {
+                return await _context.PostFeedback(feedback);
+            }
+            catch
+            {
+                if (feedback.FeedbackMessage==null)
+                {
+                    return BadRequest(new { error = "Message is null" });
+                }
+                return StatusCode(StatusCodes.Status500InternalServerError, new { error = "An unknown server error occurred." });
+            }
 
         }
 

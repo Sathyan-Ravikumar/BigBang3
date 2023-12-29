@@ -37,12 +37,12 @@ namespace MakeYourTrip.Repository.Services
         }*/
         public async Task<List<AdminImageUpload>> Postall([FromForm] FileModel aiu)
         {
-            string ImagePath = await SaveImage(aiu.FormFile);
+            string ImagePath = await SaveImage(aiu!.FormFile);
             var newAdminImageUpload = new AdminImageUpload();
             newAdminImageUpload.UserId = aiu.UserId;
             newAdminImageUpload.ImagePath = ImagePath;
             newAdminImageUpload.ImageDetail = aiu.ImageDetail;
-            var obj = await _dbcontext.AdminImageUploads.AddAsync(newAdminImageUpload);
+            var obj = await _dbcontext!.AdminImageUploads.AddAsync(newAdminImageUpload);
             await _dbcontext.SaveChangesAsync();
             return await _dbcontext.AdminImageUploads.ToListAsync();
         }
@@ -61,7 +61,7 @@ namespace MakeYourTrip.Repository.Services
 
         public async Task<List<AdminImageUpload>> Getall()
         {
-            var images = _dbcontext.AdminImageUploads.ToList();
+            var images = await _dbcontext!.AdminImageUploads.ToListAsync();
             var imageList = new List<AdminImageUpload>();
             foreach (var image in images)
             {
@@ -83,8 +83,8 @@ namespace MakeYourTrip.Repository.Services
 
         public async Task<AdminImageUpload> Getadminid(int id)
         {
-            var images = _dbcontext.AdminImageUploads.ToList();
-            AdminImageUpload byid = images.SingleOrDefault(p => p.ImageId == id);
+            var images = await _dbcontext!.AdminImageUploads.ToListAsync();
+            AdminImageUpload byid = images!.SingleOrDefault(p => p.ImageId == id);
             
             var uploadsFolder = Path.Combine(_hostEnvironment.WebRootPath, "AdminImage");
             var filePath = Path.Combine(uploadsFolder, byid.ImagePath);

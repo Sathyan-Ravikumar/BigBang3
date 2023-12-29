@@ -8,7 +8,7 @@ namespace MakeYourTrip.Repository.Interface
         public Task<List<PackageHotelBuffer>> GetHotels(int packid);
         public Task<List<ItineraryBuffer>> GetItinerary(int packid);
 
-        public Task<Package> GetPackagebyUserId(int userid);
+        public Task<List<Package>> GetPackagesByUserId(int userId);
 
     }
 }

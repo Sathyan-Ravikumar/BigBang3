@@ -10,6 +10,9 @@ using MakeYourTrip.Repository.Interface;
 using MakeYourTrip.NewFolder;
 using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
+using MakeYourTrip.Exceptioncustom;
 
 namespace MakeYourTrip.Controllers
 {
@@ -23,25 +26,32 @@ namespace MakeYourTrip.Controllers
         {
             _context = context;
         }
-        // POST: api/AdminImageUploads
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        /*[HttpPost]
-        public async Task<ActionResult<string>> PostAdminImageUpload( IFormFile files)
+      
+
+        [HttpPost("AllAdminColumn")]
+      
+        public async Task<ActionResult<List<AdminImageUpload>>> Postall([FromForm] FileModel aiu)
         {
             try
             {
-                return Ok(await _context.PostAdminImageUpload(files));
+                return await _context.Postall(aiu);
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
-                return NotFound(ex.Message);
+                if (aiu.FormFile == null)
+                {
+                    return BadRequest(new { error = "Image Field is null" });
+                }
+                if (CustomException.ExceptionMessages.TryGetValue(ex.GetType().Name, out var errorMessage))
+                {
+                    return BadRequest(new { error = errorMessage });
+                }
+                else
+                {
+                    return StatusCode(StatusCodes.Status500InternalServerError, new { error = "An unknown error occurred." });
+                }
             }
-        }*/
-
-        [HttpPost("AllAdminColumn")]
-        public async Task<ActionResult<List<AdminImageUpload>>> Postall([FromForm] FileModel aiu)
-        {
-            return await _context.Postall(aiu);
+            
         }
 
         [HttpGet("GetAllDetailsFromAdminTable")]

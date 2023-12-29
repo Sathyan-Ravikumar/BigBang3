@@ -98,7 +98,10 @@ function Booking(userid,userrole) {
 // }
   return (
     <>
-
+    <div  style={{color:'blue',flexDirection: 'column', alignItems: 'center', justifyContent: 'center', display: 'flex',}}>   
+       <h2>Book Your Package Here</h2>
+    </div>
+  
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', }}>
       <div style={{ backgroundColor: 'whiteSmoke', boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)', padding: '20px', borderRadius: '5px' }}>
       <Stack

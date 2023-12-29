@@ -59,7 +59,20 @@ namespace MakeYourTrip.Controllers
         [HttpPost]
         public async Task<ActionResult<List<ItineraryDetail>>> PostItineraryDetail([FromForm] ItineraryImage II)
         {
-            return await _context.PostItineraryDetail(II);
+            try
+            {
+                return await _context.PostItineraryDetail(II);
+
+            }
+            catch (Exception ex)
+            {
+                if (II.ItineraryImg == null)
+                {
+                    return BadRequest(new { error = "Image Field is null" });
+                }
+                return StatusCode(StatusCodes.Status500InternalServerError, new { error = "An unknown server error occurred.", ex });
+
+            }
         }
 
         // DELETE: api/ItineraryDetails/5

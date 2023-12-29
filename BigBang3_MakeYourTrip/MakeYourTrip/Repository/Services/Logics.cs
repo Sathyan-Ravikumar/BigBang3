@@ -73,7 +73,7 @@ namespace MakeYourTrip.Repository.Services
             return Itineraries;
         }
 
-        public async Task<Package> GetPackagebyUserId(int userid)
+       /* public async Task<Package> GetPackagebyUserId(int userid)
         {
             var images = await _dbcontext.Packages.ToListAsync();
             Package byid =  images.FirstOrDefault(p => p.UserId == userid);
@@ -93,6 +93,35 @@ namespace MakeYourTrip.Repository.Services
                 PlaceImage = Convert.ToBase64String(imageBytes)
             };
             return tourData;
+        }*/
+        public async Task<List<Package>> GetPackagesByUserId(int userId)
+        {
+            var images = await _dbcontext.Packages.ToListAsync(); 
+            var packages = images.Where(p => p.UserId == userId).ToList();
+
+            var uploadsFolder = Path.Combine(_hostEnvironment.WebRootPath, "Package");
+
+            var tourDataList = new List<Package>();
+
+            foreach (var package in packages)
+            {
+                var filePath = Path.Combine(uploadsFolder, package.PlaceImage);
+                var imageBytes = await System.IO.File.ReadAllBytesAsync(filePath);
+                var tourData = new Package
+                {
+                    PackageId = package.PackageId,
+                    UserId = package.UserId,
+                    Place = package.Place,
+                    Duration = package.Duration,
+                    PackagePrice = package.PackagePrice,
+                    Description = package.Description,
+                    PlaceImage = Convert.ToBase64String(imageBytes)
+                };
+
+                tourDataList.Add(tourData);
+            }
+
+            return tourDataList;
         }
 
 

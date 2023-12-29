@@ -8,7 +8,6 @@ import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
 import Button from '@mui/material/Button';
 import axios from '../axios';
 import CardMedia from '@mui/material/CardMedia';
@@ -58,7 +57,11 @@ export default function Request() {
   };
 
   return (
-    <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+    <>
+    <div style={{textAlign:'center',color:'blue',marginBottom:'5%'}}>
+      <h2>These are the Agents Waiting For Access</h2>
+    </div>
+    <div style={{ display: 'flex', flexWrap: 'wrap',marginLeft:'5%',marginBottom:'5%' }}>
       {myData.map((item) => (
         <Card key={item.id} sx={{ maxWidth: 345, margin: '10px' }}>
           <CardHeader
@@ -67,11 +70,7 @@ export default function Request() {
                 {/* You can use item.avatar here, if available in the API response */}
               </Avatar>
             }
-            action={
-              <IconButton aria-label="settings">
-                <MoreVertIcon />
-              </IconButton>
-            }
+            
             title={item.role}
             subheader={item.agencyName}
           />
@@ -117,5 +116,6 @@ export default function Request() {
         </Card>
       ))}
     </div>
+    </>
   );
 }

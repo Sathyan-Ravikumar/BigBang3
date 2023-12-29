@@ -8,7 +8,13 @@ import { Button } from "@mui/material";
 import TextField from '@mui/material/TextField';
 import Contact from './contactus';
 
-export default function Footer() {
+export default function Footer(userid,userRole) {
+  const token = JSON.parse(sessionStorage.getItem('decodedToken'));
+
+    if (token==null) {
+        return null;
+      }
+
     return (
         <FooterContainer>
             <div>

@@ -13,5 +13,9 @@ public partial class Feedback
 
     public decimal? Rating { get; set; }
 
+    public string? Name { get; set; }
+
+    public DateTime? EntryDate { get; set; }
+
     public virtual User? User { get; set; }
 }

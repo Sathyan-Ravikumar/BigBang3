@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
-import {Box, Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
+import { Box, Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
 import { useLocation } from 'react-router-dom';
 import axios from '../axios';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import logo from '../Assets/Logonew.png';
+import { useNavigate } from 'react-router-dom';
 
 function useTotalDetailsPdf() {
   const location = useLocation();
@@ -92,6 +93,7 @@ function useTotalDetailsPdf() {
     getBillById();
   }, [bookid]);
 
+  const navigate = useNavigate();
 
   const downloadPDF = () => {
     const input = pdfRef.current;
@@ -107,25 +109,25 @@ function useTotalDetailsPdf() {
       const imgY = 30;
       pdf.addImage(imgData, 'PNG', imgX, imgY, imgwidth * ratio, imgHeight * ratio);
       pdf.save('Bill.pdf');
+      navigate('/pack');
     });
   };
-
-
   return {
     pdfRef,
     downloadPDF,
-    loading, 
-    hotelData, 
-    packageData, 
+    loading,
+    hotelData,
+    packageData,
     billData,
   };
 }
 
 export default function TotalDetailsPdf() {
-    const { pdfRef, downloadPDF, loading, hotelData, packageData, billData } = useTotalDetailsPdf();
-  
-    return (
-      <>
+  const { pdfRef, downloadPDF, loading, hotelData, packageData, billData } = useTotalDetailsPdf();
+
+  return (
+    <>
+      <div style={{margin:'20px',marginLeft:'10%'}}>
         {loading ? (
           <div>Loading...</div>
         ) : (
@@ -161,48 +163,49 @@ export default function TotalDetailsPdf() {
                         <TableCell>Group size</TableCell>
                         <TableCell>{billData.numberOfPeople}</TableCell>
                       </TableRow>
-                      
+
                     )}
                     {billData && (
                       <TableRow>
                         <TableCell>Trip Type</TableCell>
                         <TableCell>{billData.tripType}</TableCell>
                       </TableRow>
-                      
+
                     )}
                     {billData && (
                       <TableRow>
                         <TableCell>Date</TableCell>
                         <TableCell>{billData.dateOfTheTrip}</TableCell>
                       </TableRow>
-                      
+
                     )}
                     {billData && (
                       <TableRow>
                         <TableCell>Your Number</TableCell>
                         <TableCell>{billData.contactNumber}</TableCell>
                       </TableRow>
-                      
+
                     )}
                     {billData && (
                       <TableRow>
                         <TableCell>Total Amount</TableCell>
                         <TableCell>{billData.totalAmount}</TableCell>
                       </TableRow>
-                      
+
                     )}
                   </TableBody>
                 </Table>
               </TableContainer>
             </div>
-            
+
           </div>
         )}
         <Box display="flex" justifyContent="center" mt={3}>
-              <Button variant="contained" color="primary" onClick={downloadPDF}>
-                Download
-              </Button>
-            </Box>
-      </>
-    );
-  }
+          <Button variant="contained" color="primary" onClick={downloadPDF}>
+            Download
+          </Button>
+        </Box>
+      </div>
+    </>
+  );
+}

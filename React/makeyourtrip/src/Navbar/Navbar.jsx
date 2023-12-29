@@ -17,14 +17,10 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Login from '../Login/login';
-import Gallery from '../Admin/ImageGallery'
-import Req from '../Admin/AgentRequest'
-import Adminimg from '../Admin/adminpage'
-import Pack from '../Package/Packages'
-import Footer from './Footer';
 import { Link } from 'react-router-dom';
-import { faComments ,faArrowRightFromBracket,faHouse,faCircleInfo,faLocationDot} from '@fortawesome/free-solid-svg-icons';
+import { faComments, faArrowRightFromBracket, faHouse, faCircleInfo, faLocationDot, faImage } from '@fortawesome/free-solid-svg-icons';
+import { useLocation, useNavigate } from 'react-router-dom';
+
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
@@ -92,7 +88,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 );
 
-export default function MiniDrawer() {
+export default function MiniDrawer({ userId, userRole }) {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -103,16 +99,26 @@ export default function MiniDrawer() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-  const listIcons = [<FontAwesomeIcon icon={faHouse} beat />,<FontAwesomeIcon icon={faCircleInfo} beat />,<FontAwesomeIcon icon={faComments} beat />, <FontAwesomeIcon icon={faLocationDot} beat />,<FontAwesomeIcon icon={faArrowRightFromBracket} beat />]; // Import the required icons and store them in an array
+
+  const listIcons = [
+    <FontAwesomeIcon icon={faHouse} beat />,
+    <FontAwesomeIcon icon={faImage} beat />,
+    <FontAwesomeIcon icon={faCircleInfo} beat />,
+    <FontAwesomeIcon icon={faComments} beat />,
+    <FontAwesomeIcon icon={faArrowRightFromBracket} beat />,
+  ];
+  const navigate = useNavigate();
   const handleLogout = () => {
     sessionStorage.removeItem('decodedToken');
+    navigate('/');
+    window.location.reload();
   };
-  
+
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open} sx={{ backgroundColor: 'white' }}>
-        <Toolbar>
+      <AppBar position="fixed" open={open} sx={{ backgroundColor: 'white' }} >
+        <Toolbar >
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -123,30 +129,47 @@ export default function MiniDrawer() {
               ...(open && { display: 'none' }),
             }}
           >
-            <MenuIcon sx={{ color: 'blue' }}/>
+            <MenuIcon sx={{ color: 'blue' }} />
           </IconButton>
-          <Typography variant="h6" noWrap component="div" className='navtext' sx={{ textAlign: 'center', flexGrow: 1,color:'Blue' }}>
-                     Do the very thing that others have not done! Vacation time!
+          <Typography
+            variant="h6"
+            noWrap
+            component="div"
+            className="navtext"
+            sx={{ textAlign: 'center', flexGrow: 1, color: 'Blue' }}
+          >
+            Do the very thing that others have not done! Vacation time!
           </Typography>
         </Toolbar>
       </AppBar>
-      <Drawer variant="permanent" open={open}>
+      <Drawer variant="permanent" open={open} style={{ marginBottom: '10%' }}>
         <DrawerHeader>
           <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'rtl' ? <ChevronRightIcon />: <ChevronLeftIcon />}
+            {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
           </IconButton>
         </DrawerHeader>
         <Divider />
         <List>
-          {[{ text: 'Home', icon: faHouse, route: '/' },
-            { text: 'Image Gallery', icon: faCircleInfo, route: '/gallery' },
-            { text: 'Feedback', icon: faComments, route: '/feedback' },
-            { text: 'Agent Request', icon: faLocationDot, route: '/request' },
-            { text: 'Add Image', icon: faArrowRightFromBracket, route: '/admin' },
-            { text: 'Agent', icon: faArrowRightFromBracket, route: '/agent' },].map((item, index) => (
-              <ListItem key={item.text} disablePadding sx={{ display: 'block' }}>
+          {[{ text: 'Home', icon: faHouse, route: '/pack' },
+          { text: 'Image Gallery', icon: faCircleInfo, route: '/gallery' },
+          { text: 'Feedback', icon: faComments, route: '/feedback' },
+          { text: 'Agent Request', icon: faLocationDot, route: '/request' },
+          { text: 'Add Image', icon: faImage, route: '/admin' },
+          { text: 'Agent', icon: faArrowRightFromBracket, route: '/agent' },
+          { text: 'Logout', icon: faArrowRightFromBracket },
+          ].filter((item) => {
+            if (userRole === 'User') {
+              return ['Home', 'Image Gallery', 'Feedback', 'Logout'].includes(item.text);
+            } else if (userRole === 'Agent') {
+              return ['Agent', 'Home', 'Image Gallery', 'Feedback', 'Logout'].includes(item.text);
+            } else if (userRole === 'Admin') {
+              return ['Add Image', 'Home', 'Image Gallery', 'Agent Request', 'Logout'].includes(item.text);
+            }
+            return false;
+          }).map((item, index) => (
+            <ListItem key={item.text} disablePadding sx={{ display: 'block' }}>
               <ListItemButton
-                component={Link}
+                component={item.text !== 'Logout' ? Link : 'button'}
                 to={item.route}
                 sx={{
                   minHeight: 48,
@@ -154,6 +177,7 @@ export default function MiniDrawer() {
                   px: 2.5,
                   mt: index === 6 ? 40 : 0,
                 }}
+                onClick={item.text === 'Logout' ? handleLogout : undefined}
               >
                 <ListItemIcon
                   sx={{
@@ -161,7 +185,6 @@ export default function MiniDrawer() {
                     mr: open ? 3 : 'auto',
                     justifyContent: 'center',
                   }}
-                  onClick={handleLogout}
                 >
                   {listIcons[index]}
                 </ListItemIcon>
@@ -171,15 +194,8 @@ export default function MiniDrawer() {
           ))}
         </List>
       </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-
-        <div> 
-       
-        <Pack/>
-        <Footer/>
-        </div>
-
-
+      <Box component="main" sx={{ flexGrow: 1, p: 3 }} >
+        {/* Add your content here */}
       </Box>
     </Box>
   );

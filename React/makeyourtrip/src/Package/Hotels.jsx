@@ -16,7 +16,7 @@ import myVideo from '../../src/Assets/hotel1.jpg'
 function Hotel() {
   const location = useLocation();
   const { packageId, packagePrice, duration } = location.state;
-  console.log('hotel' + duration);
+  console.log('hotel' + duration,packageId);
   const [uploadedFileData, setUploadedFileData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -51,12 +51,10 @@ function Hotel() {
 
   
 
-  // Step 2: Create a function to handle search input change
   const handleSearchInputChange = (event) => {
     setSearch(event.target.value);
   };
 
-  // Step 3: Use .filter() to filter hotels by hotel name
   const filteredHotels = uploadedFileData.filter((hotel) =>
     hotel.hotelName.toLowerCase().includes(search.toLowerCase())
   );
@@ -86,9 +84,8 @@ function Hotel() {
           </div>
         </div>
       </div>
-    <div style={{ display: 'flex', flexDirection: 'column',marginTop:'5%' }}>
+    <div style={{ display: 'flex', flexDirection: 'column',marginTop:'5%',marginLeft:'100px'  }}>
      
-      {/* Step 4: Add the search bar */}
       <TextField
           type="text"
           value={search}
@@ -115,11 +112,12 @@ function Hotel() {
             />
             <CardContent>
               <Typography gutterBottom variant="h5" component="div">
-                {item.hotelName}
+              Hotel Name:  {item.hotelName}
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                {item.hotelPrice}
+              Price Per Person/day:  {item.hotelPrice}
               </Typography>
+              
               <Rating name="read-only" value={item.hotelRating} readOnly />
             </CardContent>
             <CardActions>

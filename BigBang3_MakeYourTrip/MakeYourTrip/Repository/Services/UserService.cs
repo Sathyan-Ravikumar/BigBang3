@@ -146,7 +146,6 @@ namespace MakeYourTrip.Repository.Services
 
             private string Decrypt(string encryptedPassword)
             {
-                // Example key and IV generation using hashing
                 string passphrase = "your-passphrase";
 
                 using (SHA256 sha256 = SHA256.Create())

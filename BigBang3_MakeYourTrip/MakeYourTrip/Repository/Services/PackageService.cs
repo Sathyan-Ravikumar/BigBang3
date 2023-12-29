@@ -19,7 +19,7 @@ namespace MakeYourTrip.Repository.Services
         }
         public async Task<List<Package>> GetPackages()
         {
-            var images = _dbcontext.Packages.ToList();
+            var images = await _dbcontext!.Packages.ToListAsync();
             var imageList = new List<Package>();
             foreach (var image in images)
             {
@@ -44,7 +44,7 @@ namespace MakeYourTrip.Repository.Services
         }
         public async Task<Package> GetPackage(int id)
         {
-            var images = _dbcontext.Packages.ToList();
+            var images = await _dbcontext!.Packages.ToListAsync();
             Package byid = images.SingleOrDefault(p=> p.PackageId==id);
           
                 var uploadsFolder = Path.Combine(_hostEnvironment.WebRootPath, "Package");
@@ -88,7 +88,7 @@ namespace MakeYourTrip.Repository.Services
                 pack.PackagePrice = pi.PackagePrice;
                 pack.Description = pi.Description;
                 pack.PlaceImage = ImagePath;
-                var obj = await _dbcontext.Packages.AddAsync(pack);
+                var obj = await _dbcontext!.Packages.AddAsync(pack);
                 await _dbcontext.SaveChangesAsync();
                 return pack; // Return the newly added package with a 200 status code
             
@@ -99,8 +99,8 @@ namespace MakeYourTrip.Repository.Services
         public async Task<List<Package>> DeletePackage(int id)
         {
 
-            var obj = await _dbcontext.Packages.FindAsync(id);
-            _dbcontext.Packages.Remove(obj);
+            var obj = await _dbcontext!.Packages.FindAsync(id);
+            _dbcontext.Packages.Remove(obj!);
             await _dbcontext.SaveChangesAsync();
             return await _dbcontext.Packages.ToListAsync();
         }

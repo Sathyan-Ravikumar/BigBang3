@@ -18,7 +18,7 @@ namespace MakeYourTrip.Repository.Services
         }
         public async Task<List<Hotel>> GetHotels()
         {
-            var images = _dbcontext.Hotels.ToList();
+            var images = await _dbcontext!.Hotels.ToListAsync();
             var imageList = new List<Hotel>();
             foreach (var image in images)
             {
@@ -41,7 +41,7 @@ namespace MakeYourTrip.Repository.Services
         }
         public async Task<Hotel> GetHotel(int id)
         {
-            var images = _dbcontext!.Hotels.ToList();
+            var images = await _dbcontext!.Hotels.ToListAsync();
             Hotel hotelget = images.SingleOrDefault(p => p.HotelId == id);
             var uploadsFolder = Path.Combine(_hostEnvironment.WebRootPath, "hotels");
             var filePath = Path.Combine(uploadsFolder, hotelget.HotelsImage);

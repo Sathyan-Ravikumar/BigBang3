@@ -16,8 +16,9 @@ import Input from '@mui/material/Input';
 import emailValidator from 'email-validator'; // Import a robust email validation library
 import { Link } from 'react-router-dom';
 import jwt_decode from 'jwt-decode';
+import { useLocation, useNavigate } from 'react-router-dom';
 
-export default function Login() {  
+export default function Login() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -30,40 +31,46 @@ export default function Login() {
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
-
+  const navigate = useNavigate();
   const handleRegistration = () => {
     if (!validateFields()) {
       return;
     }
 
-    // Prepare the data to be sent in the POST request
     const data = {
       name: name,
       email: email,
       password: password,
     };
 
-    // Make the POST request using axios
     axios
       .post('/Users/login', data)
       .then((response) => {
-        // Handle the response from the server (if needed)
-        console.log('Registration successful!', response.data);
+        console.log('Login successful!', response.data);
         const encodedToken = response.data;
         const decodedToken = jwt_decode(encodedToken);
-      
-        // Store the decoded token in local storage
         sessionStorage.setItem('decodedToken', JSON.stringify(decodedToken));
-      
-        // Extract user role from the decoded token
         const userRole = decodedToken.role;
-        const userid =parseInt(decodedToken.nameid, 10);
-        console.log(userRole,userid)
-        // Do something with the response, like showing a success message or redirecting
+        const userid = parseInt(decodedToken.nameid, 10);
+        console.log(userRole, userid)
+        if (userRole === 'User') {
+          navigate('/pack');
+          window.location.reload();
+        }
+        else if (userRole === 'Agent') {
+          navigate('/agent');
+          window.location.reload();
+
+        }
+        else if (userRole === 'Admin') {
+          navigate('/admin');
+          window.location.reload();
+
+        }
       })
       .catch((error) => {
-        // Handle errors, like showing an error message to the user
-        console.error('Registration failed:', error);
+        alert('Login Failed');
+        window.location.reload();
       });
   };
 
@@ -141,10 +148,10 @@ export default function Login() {
                 <Button onClick={handleRegistration}>Sign In</Button>
               </div>
               <div>
-              <Link to="/register" style={{textDecoration:'none'}}>
-                <p>Don't have an account? Register here</p>
-              </Link>             
-               </div>
+                <Link to="/register" style={{ textDecoration: 'none' }}>
+                  <p>Don't have an account? Register here</p>
+                </Link>
+              </div>
             </div>
           </div>
         </div>

@@ -52,12 +52,15 @@ function Package(userid,userrole) {
     }
   };
 
+
+  
   const getAnotherData = async (packageId) => {
     try {
+      console.log('Fetching additional data for packageId:', packageId);
       const res = await axios.get(`/Logic/ItineraryByPackId?packid=${packageId}`, {
         responseType: 'json',
       });
-      console.log(res);
+      console.log('Response:', res);
       if (Array.isArray(res.data)) {
         console.log('Additional data received:', res.data);
         setAdditionalData(res.data);
@@ -103,7 +106,7 @@ function Package(userid,userrole) {
 
   return (
     <>
-    <div className="parallax-container">
+    <div className="parallax-container" style={{marginLeft:'10px'}}>
         <div className="parallax-image">
           <img src={bgimg} alt="Background" />
         </div>
@@ -114,7 +117,7 @@ function Package(userid,userrole) {
         </div>
       </div>
 
-      <div style={{ display: 'flex', flexWrap: 'wrap', marginTop: '100px' }}>
+      <div style={{ display: 'flex', flexWrap: 'wrap', marginTop: '100px',marginLeft:'100px' }}>
 
         
         <h2 >PACKAGES</h2>
@@ -144,16 +147,16 @@ function Package(userid,userrole) {
             <CardMedia sx={{ height: 140 }} image={`data:image/jpeg;base64,${item.placeImage}`} />
             <CardContent>
               <Typography gutterBottom variant="h5" component="div">
-                {item.place}
+               place: {item.place}
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                {item.duration}
+              Duration:  {item.duration}
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                {item.packagePrice}
+               Price: {item.packagePrice}
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                {item.description}
+               Description: {item.description}
               </Typography>
 
               <Accordion expanded={expanded === `panel${item.packageId}`} onChange={handleChange(`panel${item.packageId}`)}>
@@ -168,7 +171,9 @@ function Package(userid,userrole) {
                       <Typography>Place: {dataItem.itineraryPlace}</Typography>
                       <Typography>Activity: {dataItem.activities}</Typography>
                       <Typography>Time: {dataItem.time}</Typography>
+                      <br />
                     </div>
+                    
                   ))}
                 </AccordionDetails>
               </Accordion>

@@ -16,16 +16,16 @@ namespace MakeYourTrip.Repository.Services
         }
         public async Task<List<TripBooking>> GetTripBookings()
         {
-            return await _dbcontext.TripBookings.ToListAsync();
+            return await _dbcontext!.TripBookings.ToListAsync();
         }
         public async Task<TripBooking> GetTripBooking(int id)
         {
-            var obj = await _dbcontext.TripBookings.FindAsync(id);
-            return obj;
+            var obj = await _dbcontext!.TripBookings.FindAsync(id);
+            return obj!;
         }
         public async Task<TripBooking> PostTripBooking(TripBooking tripBooking)
         {
-            var obj = await _dbcontext.TripBookings.AddAsync(tripBooking);
+            var obj = await _dbcontext!.TripBookings.AddAsync(tripBooking);
             await _dbcontext.SaveChangesAsync();
             var newlyCreatedObject = obj.Entity;
             return newlyCreatedObject;

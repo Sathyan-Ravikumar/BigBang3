@@ -42,7 +42,8 @@ export default function TitlebarBelowMasonryImageList() {
   }, []);
 
   return (
-    <Box>
+    <>    
+    <Box marginLeft={'5%'}>
       {loading ? (
         <p>Loading...</p>
       ) : error ? (
@@ -56,6 +57,7 @@ export default function TitlebarBelowMasonryImageList() {
                   src={`data:image/jpeg;base64,${item.imagePath}`}
                   alt={item.title}
                   loading="lazy"
+                  style={{borderRadius:'7px',boxShadow:'4px'}}
                 />
                 <ImageListItemBar position="below" title={item.imageDetail} />
               </ImageListItem>
@@ -64,5 +66,7 @@ export default function TitlebarBelowMasonryImageList() {
         )
       )}
     </Box>
+    </>
+
   );
 }

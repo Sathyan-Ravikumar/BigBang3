@@ -77,8 +77,18 @@ function AddHotels(userid, userrole) {
             const response = await axios.post('/Hotels', formData, config);
 
             if (response.status === 200) {
-                console.log('Successfully added package:', response.data);
-               
+                console.log('Successfully added Hotel:', response.data);
+                setInputValues({
+                    PackageId: '',
+                    HotelName: '',
+                    HotelRating: '',
+                    HotelPrice: '',
+                    HotelImage: '',
+                    PackImg: '',
+                });
+                setFile(null);
+                setFileName('');
+
             } else {
                 console.log('Received response:', response);
                 setSubmitError('Failed to add the package. Please try again later.');
@@ -107,6 +117,7 @@ function AddHotels(userid, userrole) {
                     variant="standard"
                     value={inputValues.PackageId}
                     onChange={handleInputChange}
+                    required
                 />
                 <TextField
                     id="HotelName"
@@ -115,6 +126,7 @@ function AddHotels(userid, userrole) {
                     variant="standard"
                     value={inputValues.HotelName}
                     onChange={handleInputChange}
+                    required
                 />
 
                 <TextField
@@ -126,6 +138,7 @@ function AddHotels(userid, userrole) {
                     onChange={handleInputChange}
                     error={!!imageDetailError}
                     helperText={imageDetailError}
+                    required
                 />
 
                 <TextField
@@ -135,6 +148,7 @@ function AddHotels(userid, userrole) {
                     variant="standard"
                     value={inputValues.HotelPrice}
                     onChange={handleInputChange}
+                    required
                 />
 
                 <TextField
@@ -149,6 +163,7 @@ function AddHotels(userid, userrole) {
                     required
                     error={!!fileError}
                     helperText={fileError}
+                    
                 />
 
                 <Button onClick={handleUploadFile}>Submit</Button>

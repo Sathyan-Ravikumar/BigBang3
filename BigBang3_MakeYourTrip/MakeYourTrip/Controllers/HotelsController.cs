@@ -60,7 +60,20 @@ namespace MakeYourTrip.Controllers
         [HttpPost]
         public async Task<ActionResult<List<Hotel>>> PostHotel([FromForm] HotelImg hotel)
         {
-            return await _context.PostHotel(hotel);
+            try
+            {
+                return await _context.PostHotel(hotel);
+
+            }
+            catch (Exception ex)
+            {
+                if (hotel.HotelImage == null)
+                {
+                    return BadRequest(new { error = "Image Field is null" });
+                }
+                return StatusCode(StatusCodes.Status500InternalServerError, new { error = "An unknown server error occurred.",ex });
+
+            }
         }
 
         // DELETE: api/Hotels/5

@@ -52,6 +52,10 @@ public partial class MakeYourTripContext : DbContext
 
             entity.ToTable("Feedback");
 
+            entity.Property(e => e.EntryDate)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("date");
+            entity.Property(e => e.Name).HasMaxLength(50);
             entity.Property(e => e.Rating).HasColumnType("decimal(3, 1)");
 
             entity.HasOne(d => d.User).WithMany(p => p.Feedbacks)

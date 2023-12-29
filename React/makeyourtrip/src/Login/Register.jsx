@@ -18,6 +18,8 @@ import { Link } from 'react-router-dom';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import Stack from '@mui/material/Stack';
+import { useLocation, useNavigate } from 'react-router-dom';
+import jwt_decode from 'jwt-decode';
 
 export default function Register() {
   const [name, setName] = useState('');
@@ -70,16 +72,15 @@ export default function Register() {
     axios
       .post('/Users/registerUser', data)
       .then((response) => {
-        // Handle the response from the server (if needed)
-        console.log('User Registration successful!', response.data);
-        // Do something with the response, like showing a success message or redirecting
+        alert('User Registration successful!');
+        navigate('/');
+        
       })
       .catch((error) => {
-        // Handle errors, like showing an error message to the user
         console.error('User Registration failed:', error);
       });
   };
-
+const navigate = useNavigate();
   const handleAgentRegistration = () => {
     if (!validateFields()) {
       return;
@@ -99,7 +100,8 @@ export default function Register() {
   axios
     .post('/Users/register', formData)
     .then((response) => {
-      console.log('Registration successful!', response);
+      alert("Registration Successful");
+
     })
     .catch((error) => {
       console.error('Registration failed:', error);
@@ -279,7 +281,7 @@ export default function Register() {
               <div>
                 <Button onClick={handleRegistration}>Sign In</Button>
               </div>
-              <Link to="/login" style={{ textDecoration: 'none' }}>
+              <Link to="/" style={{ textDecoration: 'none' }}>
                 <p>Already have an account? Login here</p>
               </Link>
             </div>

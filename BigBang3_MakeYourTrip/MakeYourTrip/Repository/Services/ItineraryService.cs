@@ -19,7 +19,7 @@ namespace MakeYourTrip.Repository.Services
         }
         public async Task<List<ItineraryDetail>> GetItineraryDetails()
         {
-            var images = _dbcontext!.ItineraryDetails.ToList();
+            var images = await _dbcontext!.ItineraryDetails.ToListAsync();
             var imageList = new List<ItineraryDetail>();
             foreach (var image in images)
             {
@@ -44,7 +44,7 @@ namespace MakeYourTrip.Repository.Services
         }
         public async Task<ItineraryDetail> GetItineraryDetail(int id)
         {
-            var images = _dbcontext!.ItineraryDetails.ToList();
+            var images = await _dbcontext!.ItineraryDetails.ToListAsync();
             ItineraryDetail iti = images.SingleOrDefault(p => p.ItineraryId == id);
 
             var uploadsFolder = Path.Combine(_hostEnvironment.WebRootPath, "Itinerary");
